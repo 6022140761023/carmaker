@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园出行·设计思维工作坊实习日志 — 2026.07.11</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 40px 32px;
+        }
+
+        /* ===== Typography ===== */
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 14px;
+            margin: 36px 0 16px;
+        }
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 20px 0 8px;
+        }
+        p, li { font-size: 0.98rem; color: #334155; }
+        a { color: #2563eb; }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            margin-bottom: 12px;
+        }
+        .header .meta {
+            font-size: 0.92rem;
+            color: #64748b;
+            margin-top: 6px;
+        }
+        .header .meta span { display: inline-block; margin-right: 16px; }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        /* ===== Card ===== */
+        .info-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 16px;
+            border: 1px solid #e9edf2;
+            margin: 12px 0;
+        }
+
+        /* ===== Blockquote ===== */
+        blockquote {
+            background: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1e293b;
+            position: relative;
+        }
+        blockquote .attribution {
+            display: block;
+            margin-top: 6px;
+            font-style: normal;
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* ===== Tech Detail Grid ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .tech-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 1px solid #e9edf2;
+            border-radius: 14px;
+            padding: 18px;
+        }
+        .tech-card .label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .tech-card .value {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 4px;
+        }
+        .tech-card .desc {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 6px;
+        }
+
+        /* ===== Tables ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        /* ===== Pin Mapping Table ===== */
+        .pin-table th:first-child { background: #e8f0fe; }
+        .pin-table td code {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: "JetBrains Mono", "Fira Code", monospace;
+        }
+
+        /* ===== Lists ===== */
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+
+        /* ===== Phase Connector ===== */
+        .phase-connector {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+        }
+        .phase-connector strong { color: #16a34a; }
+
+        /* ===== Ethics ===== */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px;
+            border-top: 4px solid #3b82f6;
+        }
+        .ethics-card.safety { border-top-color: #dc2626; }
+        .ethics-card.responsibility { border-top-color: #2563eb; }
+        .ethics-card.inclusion { border-top-color: #16a34a; }
+        .ethics-card h4 { font-size: 1.05rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+
+        /* ===== Footer ===== */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.5rem; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .ethics-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div>
+            <h1>⚡ 电驱系统设计与模块化原型</h1>
+            <div class="meta">
+                <span>📅 2026 年 7 月 11 日</span>
+                <span>⏱ 上午 9:00 – 下午 17:30</span>
+                <span>📍 西南交通大学 · 峨眉校区 · 6201 教室</span>
+            </div>
+            <span class="badge">Ideate + Prototype · 创意与原型阶段</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom: 24px; font-size: 0.95rem; color: #475569;">
+        经过昨日设计思维的<strong>共情（Empathize）</strong>与<strong>定义（Define）</strong>阶段，我们深入理解了校园出行中不同人群的真实需求与痛点。今日正式进入<strong>创意构思（Ideate）</strong>与<strong>原型制作（Prototype）</strong>阶段——从"发现正确的问题"转向"构建正确的解决方案"。作为小组电驱系统负责人，我完成了从电机选型到模块化底板方案设计的全流程技术决策。
+    </p>
+
+    <!-- ========== 1. 今日流程 ========== -->
+    <h2>📋 今日流程概览</h2>
+    <table>
+        <thead>
+            <tr><th style="width:22%;">时间段</th><th>活动内容</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>上午 9:00 – 12:00</td><td><strong>立创EDA操作讲授：</strong>学习原理图绘制、PCB布局、元件封装、Gerber导出等核心操作；同步了解开发环境与硬件资源（Arduino IDE、ESP32、3D打印机、激光切割机等）</td></tr>
+            <tr><td>下午 13:30 – 15:00</td><td><strong>确定卡丁车方向：</strong>小组讨论，基于昨日用户调研结论（舒适与减震为核心方向），明确以校园低速载人电动卡丁车为原型目标</td></tr>
+            <tr><td>下午 15:00 – 17:00</td><td><strong>初步PCB构想与分工：</strong>各成员明确负责模块——电驱系统（我）、车架与结构、3D建模、嵌入式软件；开始初步的底板方案设计</td></tr>
+            <tr><td>下午 17:00 – 17:30</td><td><strong>当日汇总：</strong>各负责人汇报进展，讨论技术方案可行性，明确次日目标</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ========== 2. 开发环境与硬件资源 ========== -->
+    <h2>🛠 开发环境与硬件资源</h2>
+    <p>今日以了解和学习为主，为后续实际开发做准备：</p>
+
+    <table>
+        <thead>
+            <tr><th>类别</th><th>具体资源</th><th>用途</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>嵌入式开发</strong></td><td>Arduino IDE + ESP32 支持包 / ESP-IDF</td><td>电驱控制逻辑编程与调试</td></tr>
+            <tr><td><strong>三维建模</strong></td><td>Fusion 360 / SolidWorks / Solvespace / OpenSCAD</td><td>车架及结构件设计与仿真</td></tr>
+            <tr><td><strong>PCB设计</strong></td><td>立创EDA（已完成基础学习）</td><td>电驱底板原理图与PCB布局</td></tr>
+            <tr><td><strong>快速原型</strong></td><td>3D打印机 ×10 / 激光切割机 ×2</td><td>结构件快速迭代与验证</td></tr>
+            <tr><td><strong>电气装配</strong></td><td>点焊机 ×2 / 直流电源 / 示波器 / 铝型材切割机</td><td>电池组装、电路调试、车架搭建</td></tr>
+            <tr><td><strong>网络</strong></td><td>WiFi: fablabem / 密码: swjtu1896</td><td>开发板联网与资源下载</td></tr>
+        </tbody>
+    </table>
+    <p style="font-size:0.92rem; color:#64748b;">※ 今日以了解资源分布为主，后续将按需实际调用。</p>
+
+    <!-- ========== 3. 电驱系统设计（核心） ========== -->
+    <h2>⚡ 电驱系统设计 — 核心成果</h2>
+    <p>作为电驱负责人，今日完成了从电机选型到模块化底板方案的全链路技术决策，以下为详细记录。</p>
+
+    <h3>3.1 电机选型</h3>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="label">型号</div>
+            <div class="value">RS550 有刷直流电机</div>
+            <div class="desc">成熟工业级型号，成本可控，驱动电路简单可靠</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">额定电压</div>
+            <div class="value">12V DC</div>
+            <div class="desc">与车载电池系统匹配，安全电压范围，便于电源管理</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">选型依据</div>
+            <div class="value">适合校园低速载人工具</div>
+            <div class="desc">扭矩与转速特性满足校园平路与缓坡场景；有刷电机控制简单，利于快速原型验证</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">与用户需求的关联</div>
+            <div class="value">安全 · 低速 · 可靠</div>
+            <div class="desc">昨日访谈中收银员阿姨对"稳当"的需求、学生对"安全不撞人"的担忧，均指向低速高可靠性的驱动方案</div>
+        </div>
+    </div>
+
+    <h3>3.2 驱动方案</h3>
+    <table>
+        <thead>
+            <tr><th>项目</th><th>选型</th><th>理由</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>驱动芯片/模块</strong></td><td>BTS7960 双模块 H桥</td><td>功率余量大，单模块即可驱动 RS550；支持并联以进一步提高电流能力</td></tr>
+            <tr><td><strong>主控制器</strong></td><td>ESP32 开发板</td><td>性能充足、WiFi/蓝牙双模、Arduino生态成熟、老师统一提供</td></tr>
+            <tr><td><strong>控制方式</strong></td><td>双路 PWM（RPWM / LPWM）+ 使能控制</td><td>实现正反转与无级调速，控制逻辑简洁</td></tr>
+            <tr><td><strong>保护功能</strong></td><td>BTS7960 内置过流、过温保护</td><td>硬件级安全机制，降低调试风险</td></tr>
+        </tbody>
+    </table>
+
+    <h3>3.3 设计哲学：极简模块化底板方案</h3>
+    <div class="info-card">
+        <p style="font-weight: 600; color: #0f172a; margin-bottom: 6px;">💡 核心理念：不焊芯片，只做接口——让硬件像软件一样可插拔迭代。</p>
+        <p>传统做法是将驱动芯片直接焊接在PCB上，一旦烧毁或方案变更就需要重新打板。我采用了另一种思路：</p>
+        <ul>
+            <li><strong>底板仅做插座和接口</strong>——不焊接任何核心芯片，仅设计排母、排针、接线端子</li>
+            <li><strong>ESP32 开发板通过 2×15 排母插接</strong>——可随时拆换，便于调试和故障定位</li>
+            <li><strong>两个 BTS7960 模块通过 1×8 排针插接</strong>——模块化，损坏可单独更换，无需重新焊接</li>
+            <li><strong>包含必要的外围接口</strong>：XT60 电源输入、电机接线柱、5V 降压模块接口、电流采样接口、M3 安装孔</li>
+        </ul>
+        <p style="margin-top: 8px; color: #475569;">这一方案的最大优势是<strong>迭代友好</strong>：原型阶段可快速更换不同模块进行测试，待方案稳定后再考虑集成化打板。</p>
+    </div>
+
+    <h3>3.4 立创EDA 成果</h3>
+    <p>在立创EDA中完成了以下前期设计工作：</p>
+
+    <table>
+        <thead>
+            <tr><th>工作项</th><th>具体内容</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>元件清单确定</strong></td><td>2×15 排母 ×1、1×8 排针 ×2、XT60 插座 ×1、电机接线柱 ×2、100μF/25V 电解电容 ×2、0.1μF 瓷片电容 ×2、5V 降压模块接口、M3 铜柱孔 ×4</td></tr>
+            <tr><td><strong>功能分区规划</strong></td><td><strong>电源区</strong>（XT60 输入 + 滤波电容 + 5V 降压）→ <strong>驱动区</strong>（两个 BTS7960 模块插座 + 电机接线柱）→ <strong>控制区</strong>（ESP32 排母 + 逻辑引脚走线）</td></tr>
+            <tr><td><strong>引脚映射定义</strong></td><td>明确 ESP32 GPIO 与 BTS7960 控制引脚的对应关系（见下方引脚映射表）</td></tr>
+            <tr><td><strong>电源与PCB规则</strong></td><td>电源走线设置 40mil 线宽以承载电机电流；GND 采用整面铺铜降低回路阻抗；设置安全间距规则</td></tr>
+        </tbody>
+    </table>
+
+    <h4>ESP32 ↔ BTS7960 引脚映射关系</h4>
+    <table class="pin-table">
+        <thead>
+            <tr><th>ESP32 GPIO</th><th>BTS7960 引脚</th><th>功能说明</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>GPIO 27</code></td><td><code>RPWM (模块1)</code></td><td>右电机正转 PWM</td></tr>
+            <tr><td><code>GPIO 14</code></td><td><code>LPWM (模块1)</code></td><td>右电机反转 PWM</td></tr>
+            <tr><td><code>GPIO 12</code></td><td><code>R_EN (模块1)</code></td><td>右电机使能</td></tr>
+            <tr><td><code>GPIO 13</code></td><td><code>L_EN (模块1)</code></td><td>左电机使能</td></tr>
+            <tr><td><code>GPIO 26</code></td><td><code>RPWM (模块2)</code></td><td>左电机正转 PWM</td></tr>
+            <tr><td><code>GPIO 25</code></td><td><code>LPWM (模块2)</code></td><td>左电机反转 PWM</td></tr>
+            <tr><td><code>5V</code></td><td><code>VCC</code></td><td>模块逻辑电源</td></tr>
+            <tr><td><code>GND</code></td><td><code>GND</code></td><td>共地</td></tr>
+        </tbody>
+    </table>
+
+    <h3>3.5 下一阶段计划</h3>
+    <ol>
+        <li><strong>完成原理图连线</strong> — 在立创EDA中将元件符号按功能分区连接</li>
+        <li><strong>PCB布局布线</strong> — 按照电源区→驱动区→控制区的顺序优化布局，确保大电流回路短而宽</li>
+        <li><strong>生成 Gerber 文件</strong> — 导出制板文件，提交打样</li>
+        <li><strong>焊接与调试</strong> — 焊接底板，测试电机正反转控制与 PWM 调速功能</li>
+    </ol>
+
+    <!-- ========== 4. 设计思维关联 ========== -->
+    <h2>🔗 从「共情与定义」到「技术与方案」</h2>
+    <div class="phase-connector">
+        <p>
+            昨日我们通过访谈发现：<strong>收银员阿姨最怕路面颠簸加重腰痛</strong>、<strong>学生抱怨坡道太陡走出一身汗</strong>、<strong>后勤工人苦于班车等待时间过长</strong>。这些真实的需求为今日的技术决策提供了明确方向。
+        </p>
+        <p style="margin-top: 8px;">
+            <strong>RS550 电机的选择</strong>不是偶然的——它的低速大扭矩特性正好服务于"平稳、安全"的用户核心诉求；<strong>BTS7960 双模块设计</strong>提供了冗余余量，确保在校园坡道上动力充足；<strong>模块化底板哲学</strong>则源于设计思维"快速迭代试错"的理念——我们不是在制造一个最终产品，而是在搭建一个可以不断学习和改进的原型平台。
+        </p>
+        <p style="margin-top: 8px;">
+            设计思维教会我们：<strong>好的技术方案不是凭空产生的，而是从对人的理解中生长出来的。</strong>今天的每一颗螺丝、每一根走线，都回应着昨天那位阿姨说过的"腰痛得厉害"、那位学生说过的"走几步就一身汗"。
+        </p>
+    </div>
+
+    <!-- ========== 5. 工程伦理反思 ========== -->
+    <h2>⚖️ 工程伦理反思（电驱视角）</h2>
+    <div class="ethics-grid">
+        <div class="ethics-card safety">
+            <h4>🛡 安全</h4>
+            <p>
+                电驱系统的安全性是设计的底线。BTS7960 内置的过流与过温保护是第一道防线；底板电源走线采用 40mil 宽线并辅以 GND 铺铜，防止大电流导致线路过热；XT60 连接器具有防反插设计，从物理上避免电源接反导致的事故。此外，在后续软件层面还需要加入油门误操作保护——当检测到异常急加速时自动切断动力输出。安全不是某个模块的附加功能，而应贯穿整个电驱系统的设计始终。
+            </p>
+        </div>
+        <div class="ethics-card responsibility">
+            <h4>📋 责任</h4>
+            <p>
+                作为电驱负责人，我深刻意识到自己的责任不仅在于让电机转起来，更在于为团队其他成员提供<strong>清晰、可靠的接口规范</strong>——明确电源输出能力、通信协议、物理空间约束，让负责车架、软件、电池的队友能够并行工作而互不干扰。模块化底板的设计本身就是一种负责任的工程实践：它降低了后续调试过程中因焊接问题导致的安全风险，也使得故障排查和模块更换变得更加简单透明。同时，在立创EDA中保存完整的设计文件和元器件清单，也是工程可复现性的基本要求。
+            </p>
+        </div>
+        <div class="ethics-card inclusion">
+            <h4>🤝 包容</h4>
+            <p>
+                电驱系统的设计直接影响整车的行驶特性。RS550 电机的低速大扭矩特性使我们能够将最高速度控制在校园安全的合理范围内（预计不超过 15km/h），这不仅保护了驾驶者，更保护了校园中行走的老人与儿童。我们特别选择<strong>有刷电机方案</strong>而非速度更快的大功率无刷电机，正是基于包容性设计理念——这款车的目标用户不是追求速度的玩家，而是需要<strong>安全、便捷、有尊严地出行</strong>的每一位校园成员。低速，是一种对弱势群体的主动关怀。
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== 6. 收获与体会 ========== -->
+    <h2>📝 收获与体会</h2>
+    <div class="info-card">
+        <p>
+            今日是技术密集的一天。上午立创EDA的学习让我掌握了从原理图到PCB的关键技能；下午从确定卡丁车方向到完成电驱系统方案，经历了完整的技术决策链路。
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>学会在约束中做决策：</strong>电机选型不是参数越高越好，而是要在成本、可获得性、控制复杂度、安全性之间找到平衡点。RS550 未必是性能最强的电机，但对于校园低速载人这个场景来说，它是最"合适"的。</li>
+            <li><strong>模块化思维的价值：</strong>在原型阶段，可插拔的设计远比集成化设计更高效。今天深刻体会到——<strong>做硬件的灵活性，很大程度上取决于你留了多少接口给自己。</strong></li>
+            <li><strong>技术方案始终服务于人：</strong>立创EDA中画下的每一根走线，背后都应该有一个"为什么"——不是"因为老师要求这样做"，而是"因为用户在昨天的访谈中提到了这样的需求"。这大概是设计思维给我们最大的启发。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            明天将进入 PCB 布局与原理图连线的实操阶段，期待看到自己的设计从屏幕走向实物。
+        </p>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 设计思维工作坊</p>
+        <p style="margin-top: 4px;">实习日志 · 2026 年 7 月 11 日 · 创意与原型阶段 · 电驱系统负责人记录</p>
+    </div>
+
+</div>
+</body>
+</html>
