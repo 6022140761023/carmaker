@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月11日 电驱系统设计与PCB实践实习日志 — TMI8720 + AGM210MAP</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+
+        /* ===== Typography ===== */
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 14px;
+            margin: 38px 0 16px;
+        }
+        h3 {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 22px 0 10px;
+        }
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 16px 0 8px;
+        }
+        p, li { font-size: 0.97rem; color: #334155; }
+        a { color: #2563eb; }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            margin-bottom: 14px;
+        }
+        .header .meta {
+            font-size: 0.92rem;
+            color: #64748b;
+            margin-top: 6px;
+        }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        /* ===== Card ===== */
+        .info-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid #e9edf2;
+            margin: 14px 0;
+        }
+
+        /* ===== Blockquote ===== */
+        blockquote {
+            background: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1e293b;
+        }
+        blockquote .attribution {
+            display: block;
+            margin-top: 6px;
+            font-style: normal;
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* ===== Tech Grid ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 12px 0;
+        }
+        .tech-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 1px solid #e9edf2;
+            border-radius: 14px;
+            padding: 18px;
+        }
+        .tech-card .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .tech-card .value {
+            font-size: 1.04rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 4px;
+        }
+        .tech-card .desc {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 6px;
+        }
+
+        /* ===== Tables ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        /* ===== Pin Table ===== */
+        .pin-table th:first-child { background: #e8f0fe; }
+        .pin-table td code {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-family: "JetBrains Mono", "Fira Code", monospace;
+        }
+
+        /* ===== Lists ===== */
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+
+        /* ===== Highlight Box ===== */
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+
+        /* ===== Ethics ===== */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px;
+            border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+
+        /* ===== Problem/Solution ===== */
+        .problem-item {
+            display: flex;
+            gap: 14px;
+            margin: 12px 0;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+
+        /* ===== Footer ===== */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div>
+            <h1>⚡ 电驱系统设计与PCB实践实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月11日</span>
+                <span>⏱ 09:00 – 17:30</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🔧 硬件设计实践 · TMI8720 + AGM210MAP 方案</span>
+        </div>
+    </div>
+
+    <!-- ========== 导读 ========== -->
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月11日的工程实践内容：从上午立创EDA的学习，到下午完成基于<strong>TMI8720 + AGM210MAP</strong>双路H桥电机驱动底板的方案设计。日志涵盖技术选型、原理图设计、工程伦理反思与后续计划，旨在体现一名硬件工程师在实践中的决策逻辑与责任意识。
+    </p>
+
+    <!-- ========== 一、今日工作内容 ========== -->
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 学习立创EDA</h3>
+    <p>上午由老师讲授立创EDA的操作流程，内容包括：</p>
+    <ul>
+        <li><strong>原理图绘制</strong>：元件符号的放置、连线、网络标签的使用</li>
+        <li><strong>PCB布局布线</strong>：元件布局原则、走线宽度设置、铺铜操作</li>
+        <li><strong>元件封装</strong>：常见封装的识别与选择（SOP、QFN、排针排母等）</li>
+        <li><strong>Gerber文件导出</strong>：制板文件的生成与检查</li>
+    </ul>
+    <p>同步了解了实验室的硬件资源：Arduino IDE / ESP-IDF 开发环境、3D打印机、激光切割机、点焊机、示波器等，为后续原型制作做准备。</p>
+
+    <h3>1.2 电机驱动方案选型与原理图绘制</h3>
+    <p>下午经过方案论证，确定了以 <strong>TMI8720 + AGM210MAP</strong> 为核心的双路H桥电机驱动方案，并在立创EDA中开始绘制<strong>ESP32 + 双TMI8720/AGM210MAP 电机驱动底板</strong>的原理图。</p>
+
+    <div class="info-card">
+        <p style="font-weight: 600; color: #0f172a; margin-bottom: 6px;">💡 核心设计理念：模块化底板</p>
+        <p>底板采用极简设计——<strong>不焊接核心控制芯片，只画插座和接口</strong>：</p>
+        <ul>
+            <li>ESP32 开发板通过 <strong>2×15 排母</strong> 插接，可随时拆换</li>
+            <li>两路驱动电路独立模块化：每路集成 TMI8720 驱动芯片 + 两颗 AGM210MAP MOSFET</li>
+            <li>底板仅提供：电源输入（XT60）、滤波电路、接口插座、电机接线端子、电流采样电阻</li>
+            <li>所有 GPIO 信号通过排母引出，便于调试与复用</li>
+        </ul>
+        <p style="margin-top: 8px; color: #475569;">这种模块化设计使得原型阶段可快速迭代：驱动模块损坏只需更换对应模块，无需重新打板。</p>
+    </div>
+
+    <!-- ========== 二、关键技术点 ========== -->
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 驱动方案：TMI8720 + AGM210MAP H桥架构</h3>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="label">主控芯片</div>
+            <div class="value">ESP32-WROOM-32</div>
+            <div class="desc">双核处理器，PWM 频率可调，WiFi/蓝牙双模，Arduino 生态成熟</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">驱动芯片</div>
+            <div class="value">TMI8720 × 2</div>
+            <div class="desc">集成H桥预驱动，支持 PWM 控制，内置过流/过温保护，逻辑输入兼容 3.3V/5V</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">功率 MOSFET</div>
+            <div class="value">AGM210MAP × 4</div>
+            <div class="desc">N沟道增强型，低导通电阻 R<sub>DS(on)</sub> ≈ 10mΩ，每路H桥使用2颗（上管+下管）</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">电机</div>
+            <div class="value">RS550 有刷直流电机 × 2</div>
+            <div class="desc">额定 12V，适合校园低速载人工具，双电机独立驱动实现差速转向</div>
+        </div>
+    </div>
+
+    <h3>2.2 电路架构说明</h3>
+    <p>每路电机驱动采用 <strong>TMI8720 + 双AGM210MAP</strong> 组成经典H桥拓扑：</p>
+    <ul>
+        <li><strong>TMI8720</strong> 作为预驱动芯片，接收 ESP32 的 PWM 和方向控制信号，输出栅极驱动电平</li>
+        <li><strong>两颗 AGM210MAP</strong> 分别作为 H 桥的高侧和低侧功率管，由 TMI8720 的栅极驱动引脚控制通断</li>
+        <li>通过 PWM 占空比调节电机转速，通过 H 桥切换实现正反转</li>
+    </ul>
+
+    <h3>2.3 ESP32 引脚分配</h3>
+    <table class="pin-table">
+        <thead>
+            <tr><th>ESP32 GPIO</th><th>连接目标</th><th>功能说明</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>GPIO 27</code></td><td>TMI8720-1 PWM1</td><td>右电机 PWM 调速</td></tr>
+            <tr><td><code>GPIO 14</code></td><td>TMI8720-1 PWM2</td><td>右电机方向控制</td></tr>
+            <tr><td><code>GPIO 12</code></td><td>TMI8720-1 EN</td><td>右电机使能（高电平有效）</td></tr>
+            <tr><td><code>GPIO 26</code></td><td>TMI8720-2 PWM1</td><td>左电机 PWM 调速</td></tr>
+            <tr><td><code>GPIO 25</code></td><td>TMI8720-2 PWM2</td><td>左电机方向控制</td></tr>
+            <tr><td><code>GPIO 13</code></td><td>TMI8720-2 EN</td><td>左电机使能（高电平有效）</td></tr>
+            <tr><td><code>GPIO 34</code></td><td>电流采样（ADC）</td><td>右电机电流检测输入</td></tr>
+            <tr><td><code>GPIO 35</code></td><td>电流采样（ADC）</td><td>左电机电流检测输入</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.4 电源滤波与保护电路</h3>
+    <table>
+        <thead>
+            <tr><th>电路模块</th><th>元件</th><th>作用</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>输入滤波</strong></td><td>470μF/25V 电解电容 + 0.1μF 瓷片电容</td><td>抑制电源纹波，吸收电机启动时的大电流冲击</td></tr>
+            <tr><td><strong>本地去耦</strong></td><td>10μF/25V 钽电容 + 0.1μF 瓷片电容（每路TMI8720附近）</td><td>降低驱动芯片电源回路的阻抗，防止逻辑误触发</td></tr>
+            <tr><td><strong>电流采样</strong></td><td>0.01Ω / 2W 采样电阻 + 差分运放</td><td>实时监测电机电流，异常时软件切断PWM输出</td></tr>
+            <tr><td><strong>使能控制</strong></td><td>ESP32 GPIO 直连 TMI8720 EN 引脚</td><td>故障时立即拉低使能，硬件级切断驱动，响应时间 < 1μs</td></tr>
+            <tr><td><strong>续流保护</strong></td><td>AGM210MAP 体二极管 + 外部肖特基二极管（可选）</td><td>吸收电机续流能量，保护MOSFET不因反电动势击穿</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.5 原理图绘制要点</h3>
+    <ul>
+        <li><strong>功能分区布局</strong>：电源区（XT60 + 滤波）→ 驱动区（TMI8720 + AGM210MAP H桥）→ 控制区（ESP32 排母接口）</li>
+        <li><strong>网络标签规范</strong>：使用 MOTOR1_PWM、MOTOR1_DIR、MOTOR1_EN 等语义化标签，便于后期调试</li>
+        <li><strong>电源走线</strong>：电源主回路设置 50mil 线宽，确保承载 5A 以上电机电流</li>
+        <li><strong>信号走线</strong>：PWM 信号线采用 10mil 线宽，远离大电流回路以减少电磁干扰</li>
+        <li><strong>GND 铺铜</strong>：底层整面铺铜，降低地回路阻抗，提升EMC性能</li>
+    </ul>
+
+    <!-- ========== 三、用户/工程反思 ========== -->
+    <h2>三、用户与工程反思（结合设计思维）</h2>
+
+    <h3>3.1 为什么选择 TMI8720 + AGM210MAP 方案？</h3>
+    <table>
+        <thead>
+            <tr><th>考量维度</th><th>TMI8720 + AGM210MAP</th><th>对比选项（如BTS7960模块）</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>功率能力</strong></td><td>AGM210MAP R<sub>DS(on)</sub> ≈ 10mΩ，理论持续电流可达 10A+</td><td>BTS7960 单模块额定 43A，但模块体积大</td></tr>
+            <tr><td><strong>成本控制</strong></td><td>芯片级方案，单路成本约 8-12 元（TMI8720 ~5元 + AGM210MAP ×2 ~3元）</td><td>单模块 15-25 元，双路 30-50 元</td></tr>
+            <tr><td><strong>易用性</strong></td><td>TMI8720 逻辑接口兼容 3.3V 直连 ESP32，无需电平转换</td><td>BTS7960 需注意逻辑电平匹配，5V逻辑需加限流电阻</td></tr>
+            <tr><td><strong>集成度</strong></td><td>可自行优化 PCB 布局，尺寸紧凑，适合底板集成</td><td>模块体积大，占用底板空间，不利于结构紧凑</td></tr>
+            <tr><td><strong>学习价值</strong></td><td>从芯片级理解H桥驱动原理，对工程能力提升更大</td><td>模块方案偏黑盒，不利于深入理解</td></tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 6px; color: #475569;">
+        <strong>结论：</strong>综合考虑校园低速载人工具的实际功率需求（~100W级）、项目预算限制（学生自费）、以及工程实践的学习目标，<strong>TMI8720 + AGM210MAP 芯片级方案是最优解</strong>——它在性能、成本、教育意义三者之间取得了良好平衡。
+    </p>
+
+    <h3>3.2 安全考虑</h3>
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>🛡 硬件级保护</h4>
+            <p>
+                TMI8720 内置过流保护（OCP）和过温保护（TSD），当电流超过阈值或芯片温度过高时自动关断输出，无需软件干预即可保护电路安全。同时，使能引脚（EN）由 ESP32 独立控制，可在检测到异常时立即拉低，实现 μs 级响应切断。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔌 电源保护</h4>
+            <p>
+                输入端采用 XT60 防反插连接器，物理上杜绝电源接反风险。电源入口并联大容量电解电容 + 瓷片电容，吸收电机启停和换向时产生的尖峰电压，保护 MOSFET 免受过压击穿。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📊 电流监控</h4>
+            <p>
+                每路电机串入 0.01Ω 采样电阻，经差分运放放大后送入 ESP32 ADC。软件中设置电流阈值，当检测到堵转或短路电流时自动停止 PWM 输出并记录故障日志，形成"硬件保护 + 软件监控"的双重安全防线。
+            </p>
+        </div>
+    </div>
+
+    <h3>3.3 包容性设计（适合校园载人低速工具）</h3>
+    <div class="highlight-box">
+        <p>
+            <strong>为什么不是高速大功率方案？</strong> 我们设计的目标用户是校园中的每一位成员——赶课的学生、推着手推车的后勤工人、在校园漫步的老人和儿童。<strong>低速、安全、可靠</strong>是首要原则。TMI8720 + AGM210MAP 方案将最高车速控制在 12-15km/h 的安全范围，避免了因追求高性能而带来的安全隐患。
+        </p>
+        <p style="margin-top: 8px;">
+            同时，芯片级方案的成本优势使原型更加亲民——如果方案成功，未来可以以更低的成本推广到更多校园，让更多需要便捷出行的人受益。这不仅是一项技术设计，更是一种<strong>对社会包容性的主动回应</strong>。
+        </p>
+    </div>
+
+    <!-- ========== 四、遇到的问题与解决 ========== -->
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：原理图连线时 TMI8720 的栅极驱动引脚与 AGM210MAP 的匹配</strong>
+            <p>TMI8720 的输出驱动电流有限，直接驱动 AGM210MAP（输入电容较大）可能导致开关速度过慢，增加开关损耗。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>查阅 TMI8720 数据手册，确认其栅极驱动电流为 1.5A（源）和 2.0A（漏），足以驱动 AGM210MAP 的 ~3nC 栅极充电电荷。为优化开关速度，在栅极串联 10Ω 电阻限制充放电电流，并在栅源极间并联 10kΩ 下拉电阻防止浮空导通。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：电源滤波电容容值选择——能否有效抑制电机启动浪涌？</strong>
+            <p>12V 电机启动瞬间电流可达额定电流的 3-5 倍（约 5-8A），如果滤波电容容值不足，母线电压会跌落至 TMI8720 欠压保护阈值以下。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>计算所需储能：假设电压跌落不超过 0.5V，浪涌持续时间 10ms，所需电容 C = I·Δt / ΔV = 8A × 10ms / 0.5V = 160,000μF。这个容值过于庞大不现实。实际采用工程折衷：输入端选用 470μF 电解电容，配合 TMI8720 的软启动功能（内置1ms斜坡启动），将浪涌电流控制在 2A 以内，同时软件中实现"渐进式加速"策略——PWM 占空比在 0.5 秒内逐渐升高，避免瞬时大电流冲击。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题3：电流采样电路共模干扰</strong>
+            <p>采样电阻位于 H 桥低侧，电机工作时采样电阻两端的共模电压在 0-12V 之间快速跳变，普通运放难以准确放大差模信号。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>选用高共模抑制比（CMRR > 100dB）的差分运放（如 INA180），并严格遵循"开尔文连接"法则——采样电阻的两根引线分别直接连接到运放输入端，避免大电流路径上的压降干扰。同时在运放输出端增加 RC 低通滤波（截止频率 ~1kHz），滤除 PWM 开关噪声。
+        </div>
+    </div>
+
+    <!-- ========== 五、下一步计划 ========== -->
+    <h2>五、下一步计划</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>任务</th><th>预期产出</th><th>预计时间</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. PCB 布局</strong></td>
+                <td>在立创EDA中完成底板 PCB 布局布线；优化大电流回路与信号线隔离</td>
+                <td>PCB 设计文件（.json + 预览图）</td>
+                <td>1-2 天</td>
+            </tr>
+            <tr>
+                <td><strong>2. 打样</strong></td>
+                <td>导出 Gerber 文件，提交立创打样（选择 1.6mm 板厚，2oz 铜厚）</td>
+                <td>Gerber 文件包 + 订单确认</td>
+                <td>3-5 天（含生产周期）</td>
+            </tr>
+            <tr>
+                <td><strong>3. 焊接与调试</strong></td>
+                <td>焊接底板（TMI8720、AGM210MAP、接口件等）；用示波器测试各节点波形</td>
+                <td>焊接完成的主板 + 测试报告</td>
+                <td>1 天</td>
+            </tr>
+            <tr>
+                <td><strong>4. 控制代码开发</strong></td>
+                <td>编写ESP32控制代码：PWM 调速、正反转控制、电流检测与保护逻辑、差速转向算法</td>
+                <td>Arduino 工程代码 + 调试日志</td>
+                <td>2-3 天</td>
+            </tr>
+            <tr>
+                <td><strong>5. 整车联调</strong></td>
+                <td>将电驱底板接入车架，配合电池、遥控/操作模块进行路面测试</td>
+                <td>原型车初步行驶测试</td>
+                <td>2 天</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-card" style="margin-top: 16px;">
+        <p style="font-weight: 600; color: #0f172a; margin-bottom: 6px;">📌 短期优先事项</p>
+        <ul>
+            <li>完成 PCB 布局后先做 DRC 检查，确保电气规则无错误</li>
+            <li>焊接前使用万用表逐一测量电源对地阻抗，排除短路风险</li>
+            <li>控制代码先实现"开环调速 + 电流保护"，再迭代闭环 PID 控制</li>
+        </ul>
+    </div>
+
+    <!-- ========== 六、实习总结 ========== -->
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今日是技术密集且成果丰富的一天。从上午学习立创EDA到下午完成基于 TMI8720 + AGM210MAP 双路H桥驱动底板的方案设计，我经历了一次完整的硬件设计决策链路，收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>工程决策需要多维度权衡：</strong>TMI8720 + AGM210MAP 方案不是参数最"强"的，但它是在功率能力、成本控制、易用性和学习价值之间最优的平衡点。好的工程师不是在追求极端性能，而是在约束条件中找到最佳解。</li>
+            <li><strong>安全设计必须前置：</strong>从 TMI8720 的过流保护到采样电阻的电流监控，再到软件中的渐进式加速策略，安全不是事后补救，而应贯穿设计的每一个环节。这既是工程责任，也是伦理底线。</li>
+            <li><strong>从"用模块"到"做芯片级设计"的跨越：</strong>相比于直接购买现成的驱动模块，自己用 TMI8720 + AGM210MAP 搭建 H 桥让我真正理解了 MOSFET 栅极驱动、死区时间、续流路径等之前仅停留在书本上的概念。这大概就是工程实践的意义——让知识不再是纸上的符号，而是手中掂量的真实。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            明天将继续 PCB 布局工作，期待看到自己设计的电路从屏幕走向实物。
+        </p>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月11日 · TMI8720 + AGM210MAP 电驱系统设计 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
