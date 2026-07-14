@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月13日 PCB终改与VM过孔阵列实习日志</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+
+        /* ===== Typography ===== */
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 14px;
+            margin: 38px 0 16px;
+        }
+        h3 {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 22px 0 10px;
+        }
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 16px 0 8px;
+        }
+        p, li { font-size: 0.97rem; color: #334155; }
+        a { color: #2563eb; }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            margin-bottom: 14px;
+        }
+        .header .meta {
+            font-size: 0.92rem;
+            color: #64748b;
+            margin-top: 6px;
+        }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        /* ===== Card ===== */
+        .info-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid #e9edf2;
+            margin: 14px 0;
+        }
+
+        /* ===== Blockquote ===== */
+        blockquote {
+            background: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1e293b;
+        }
+        blockquote .attribution {
+            display: block;
+            margin-top: 6px;
+            font-style: normal;
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* ===== Tech Grid ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 12px 0;
+        }
+        .tech-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 1px solid #e9edf2;
+            border-radius: 14px;
+            padding: 18px;
+        }
+        .tech-card .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .tech-card .value {
+            font-size: 1.04rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 4px;
+        }
+        .tech-card .desc {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 6px;
+        }
+
+        /* ===== Tables ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        /* ===== Lists ===== */
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+
+        /* ===== Highlight Box ===== */
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+
+        /* ===== Ethics ===== */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px;
+            border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+
+        /* ===== Problem/Solution ===== */
+        .problem-item {
+            display: flex;
+            gap: 14px;
+            margin: 12px 0;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+
+        /* ===== Flow Step ===== */
+        .flow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0;
+        }
+        .flow-step {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .flow-step .arrow { color: #94a3b8; margin: 0 6px; }
+
+        /* ===== Footer ===== */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+            .flow-steps { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div>
+            <h1>🔧 PCB终改与VM过孔阵列实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月13日</span>
+                <span>⏱ 09:00 – 18:00</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🔌 硬件设计实践 · 打样前最终修改</span>
+        </div>
+    </div>
+
+    <!-- ========== 导读 ========== -->
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月13日的工程实践内容：在PCB下单打样前进行最终修改，包括嘉立创工艺参数确认、ESP32供电口径澄清、PCB线宽加宽整改、底层铺铜设计与<strong>VM过孔阵列</strong>的添加。日志涵盖技术决策、踩坑记录与经验沉淀，体现了一名硬件工程师在打样前"最后一公里"的严谨态度。
+    </p>
+
+    <!-- ========== 一、今日工作内容 ========== -->
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 上午：工艺参数确认与供电口径澄清</h3>
+    <ul>
+        <li><strong>嘉立创工艺参数逐项核对</strong>：铜厚1oz、阻焊嘉立创紫+白字、有铅喷锡、最小孔径0.3mm（免费档）、AOI+飞针全测——<strong>全部默认，无需修改</strong></li>
+        <li><strong>ESP32供电口径澄清</strong>：ESP32供电=5V（USB或VIN），由12V母线经buck降压模块提供；严禁12V直入；控制信号为3.3V逻辑（IN1/IN2直连GPIO，TMI8720兼容）；驱动板与ESP32必须共地（U4-3）；结论——驱动板设计零改动，两板之间仅IN1/IN2/GND三根线</li>
+    </ul>
+
+    <h3>1.2 下午：PCB线宽整改与底层铺铜</h3>
+    <ul>
+        <li><strong>线宽分档处理</strong>：
+            <ul>
+                <li>信号线保持0.254mm：IN1/IN2（U4→R1/R2→U1）仅几毫安，无需加宽</li>
+                <li>功率线加宽至1~1.5mm（能宽则宽）：+12V主回路、电机输出、功率地</li>
+                <li>补偿策略：顶层挤到DRC允许最大值 + 底层同名网络并联 + 换层处打2~3个过孔 + 底层整板GND铺铜解决回流</li>
+            </ul>
+        </li>
+        <li><strong>底层铺铜设计</strong>：
+            <ul>
+                <li>GND整板铺铜（底层）：沿板框内沿铺整板，重建后自动避让焊盘/走线/过孔；GND焊盘采用十字连接便于手焊</li>
+                <li>VM铺铜（底层）：覆盖电源路径区域（F1右侧至板右缘，包住全部VM过孔与顶层VM粗线）</li>
+                <li>两铺铜重叠区域按优先级裁决：VM优先级须高于GND，否则会被GND吞没</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>1.3 傍晚：VM过孔阵列 + 踩坑修复 + DRC清零</h3>
+    <ul>
+        <li><strong>VM过孔阵列（老师要求）</strong>：上下层VM铜并联载流，降低阻抗与发热；在12V入口、F1两侧、C1正极、U1 VM脚、Q1/Q2高边源极附近放置过孔；规格内径0.35mm/外径0.7mm，中心距≥1mm</li>
+        <li><strong>踩坑修复</strong>：修复3个技术问题（详见第四部分），最终DRC报错清零</li>
+    </ul>
+
+    <!-- ========== 二、关键技术点 ========== -->
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 嘉立创工艺参数确认</h3>
+    <table>
+        <thead>
+            <tr><th>项目</th><th>选择</th><th>理由</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>铜厚</strong></td><td>1oz</td><td>电机堵转仅1~2A，无需2oz</td></tr>
+            <tr><td><strong>阻焊/字符</strong></td><td>嘉立创紫 + 白字</td><td>免费，丝印对比度好</td></tr>
+            <tr><td><strong>焊盘喷镀</strong></td><td>有铅喷锡</td><td>免费，手焊插件润湿性好；DFN封装此级别可贴</td></tr>
+            <tr><td><strong>最小孔径</strong></td><td>0.3mm（免费档）</td><td>信号过孔、安装孔3.2mm均满足</td></tr>
+            <tr><td><strong>线路测试</strong></td><td>AOI + 飞针全测</td><td>免费，保留</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.2 PCB线宽分档策略</h3>
+    <table>
+        <thead>
+            <tr><th>线缆类型</th><th>线宽</th><th>适用路径</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>信号线</strong></td><td>0.254mm</td><td>IN1/IN2（U4→R1/R2→U1），仅几毫安</td></tr>
+            <tr><td><strong>功率线</strong></td><td>1~1.5mm（能宽则宽）</td><td>+12V主回路、电机输出（OUT1/OUT2）、功率地</td></tr>
+            <tr><td><strong>补偿策略</strong></td><td>顶层最大值 + 底层并联</td><td>换层处打2~3个过孔 + 底层整板GND铺铜解决回流</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.3 底层铺铜方案</h3>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="label">铺铜 1</div>
+            <div class="value">GND 整板铺铜</div>
+            <div class="desc">沿板框内沿铺整板，自动避让焊盘/走线/过孔；GND焊盘十字连接便于手焊</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">铺铜 2</div>
+            <div class="value">VM 电源铺铜</div>
+            <div class="desc">覆盖电源路径区域（F1右侧至板右缘），包住全部VM过孔与顶层VM粗线</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">优先级规则</div>
+            <div class="value">VM > GND</div>
+            <div class="desc">异名铺铜重叠时由优先级决定归属，低优先级一方自动让出规则间距</div>
+        </div>
+    </div>
+
+    <h3>2.4 VM过孔阵列规格</h3>
+    <table>
+        <thead>
+            <tr><th>位置</th><th>数量</th><th>规格</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>U2-1（12V入口）焊盘旁</td><td>3~4个一排</td><td>内径0.35mm / 外径0.7mm</td></tr>
+            <tr><td>F1两侧</td><td>各2~3个</td><td>中心距≥1mm</td></tr>
+            <tr><td>C1正极焊盘旁</td><td>3~4个</td><td>避开焊盘（≥0.3mm，禁via-in-pad）</td></tr>
+            <tr><td>U1 VM脚、Q1/Q2高边源极附近</td><td>各3~4个</td><td>满足本项目DRC（>0.305mm / >0.61mm）</td></tr>
+            <tr><td>长走线每隔5~10mm</td><td>补1~2个</td><td>免费工艺档可支持</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ========== 三、工程伦理与设计反思 ========== -->
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>🛡 安全：打样前的最后一道关</h4>
+            <p>
+                在打样前逐项核对工艺参数并非机械性工作——铜厚不足可能导致大电流路径过热，孔径选择不当可能导致焊接困难或可靠性下降。从AOI到飞针全测，每一项默认选项的背后都是对产品质量的保障。严谨对待打样前的每一个参数选择，是对最终产品负责的工程师底线。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔋 可靠：供电设计的严谨性</h4>
+            <p>
+                ESP32供电口径的澄清看似是"重复确认"，但避免了因12V直入烧毁板载LDO的重大风险。明确"驱动板与ESP32必须共地"这一红线，确保了控制信号的完整性。在工程实践中，清晰的接口规范和供电边界是系统可靠性的根基。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>⚡ 性能：载流能力的设计余量</h4>
+            <p>
+                功率线加宽至1~1.5mm、底层VM铺铜并联、过孔阵列降低阻抗——这些设计不是理论计算的结果，而是对"万一堵转电流更大怎么办"的工程预留。好的工程师会在性能、成本和安全之间留出合理余量，而不是卡着极限值做设计。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📋 责任：收尾流程的标准化</h4>
+            <p>
+                从踩坑中沉淀出"固定收尾顺序"：走线改完→铺铜→打过孔→重建铺铜→DRC。这不是教条，而是用实际教训换来的工程纪律。标准化的收尾流程可以最大程度减少人为疏漏——在打样前这道关上，一个DRC报错就可能意味着5块板全部报废。
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== 四、踩坑记录 ========== -->
+    <h2>四、踩坑记录与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>坑1：缝合孔执行后"无变化"</strong>
+            <p>铺铜「添加/移除过孔」确定后板面毫无变化。</p>
+            <p><strong>根因：</strong>铺铜被设为<strong>不可见</strong>（仅显示边框虚线），过孔和铜皮都看不见。</p>
+            <p><strong>解法：</strong>点空白处→选中铺铜边框→属性面板将「铺铜区」设为可见→重建铺铜区。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>经验教训：</strong>铺铜"看不见"先查可见性设置，别怀疑命令没执行。这是EDA工具使用中最常见也最容易忽略的问题。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>坑2：手动打孔后孔径DRC报错</strong>
+            <p>内径0.3/外径0.6不满足本项目规则（需>0.305/>0.61）。</p>
+            <p><strong>解法：</strong>框选全部过孔，统一改为0.35/0.7（仍属免费工艺档）。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>经验教训：</strong>手动放过孔后第一件事：确认网络属性和尺寸规格。直接落在目标走线上的过孔可自动继承网络，但不继承DRC规则——需要手动统一调整。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>坑3：大面积「过孔-铺铜」间距报错 + 26条未完成连接</strong>
+            <p>全部VM过孔报与GND铺铜（gge3201）间距-0.32mm，且报悬空。</p>
+            <p><strong>根因：</strong>VM铺铜①不可见②边框包住整板③优先级低于GND→被GND铺铜整体吞没，底层实际只有GND铜，过孔全落在GND上且上下无VM铜可连。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解法（6步修复）：</strong><br>
+            ① VM铺铜设为可见<br>
+            ② 编辑坐标点，缩小至仅覆盖电源路径<br>
+            ③ 右键提高VM铺铜优先级<br>
+            ④ 重建铺铜区（两块都重建）<br>
+            ⑤ 删除落在VM铜皮外的散孔<br>
+            ⑥ 重跑DRC→报错清零
+        </div>
+    </div>
+
+    <!-- ========== 五、经验沉淀 ========== -->
+    <h2>五、经验沉淀</h2>
+
+    <div class="info-card">
+        <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">📌 PCB打样前的标准化收尾流程</p>
+        <div class="flow-steps">
+            <span class="flow-step">① 走线改完 <span class="arrow">→</span></span>
+            <span class="flow-step">② 铺铜 <span class="arrow">→</span></span>
+            <span class="flow-step">③ 打过孔 <span class="arrow">→</span></span>
+            <span class="flow-step">④ 重建铺铜 <span class="arrow">→</span></span>
+            <span class="flow-step">⑤ DRC</span>
+        </div>
+        <p style="margin-top: 10px; color: #475569;">
+            铺铜不是最后一步，重建 + DRC 才是。这个顺序是用今天三个踩坑换来的。
+        </p>
+    </div>
+
+    <div class="info-card" style="margin-top: 12px;">
+        <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">📌 五个关键教训</p>
+        <ol>
+            <li><strong>铺铜不可见时先查可见性设置</strong>——别怀疑命令没执行，这是最常犯的低级错误</li>
+            <li><strong>手动放过孔后立即确认网络属性和尺寸</strong>——过孔落在走线上可自动继承网络，但不继承DRC规则</li>
+            <li><strong>异名铺铜重叠时由优先级决定归属</strong>——低优先级一方自动让出规则间距，务必检查优先级顺序</li>
+            <li><strong>过孔阵列求够用不求密</strong>——过密反而把铜皮切碎，载流适得其反</li>
+            <li><strong>打样前最后一步必须是DRC</strong>——一个报错就可能意味着5块板全部报废</li>
+        </ol>
+    </div>
+
+    <!-- ========== 六、当前状态与下一步 ========== -->
+    <h2>六、当前状态与下一步</h2>
+
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>PCB终改</strong></td>
+                <td>✅ <span style="color: #16a34a; font-weight: 600;">已完成</span></td>
+                <td>线宽整改、底层铺铜、VM过孔阵列均已完成，DRC清零</td>
+            </tr>
+            <tr>
+                <td><strong>下单打样</strong></td>
+                <td>⏳ <span style="color: #f59e0b;">进行中</span></td>
+                <td>嘉立创免费额度，5块板，进入下单流程</td>
+            </tr>
+            <tr>
+                <td><strong>板子回来后验证</strong></td>
+                <td>⬜ <span style="color: #64748b;">待进行</span></td>
+                <td>空板量电阻→限流上电→空载验证U3极性→装电机逐步加速</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p>
+            <strong>📋 板子回来后验证流程：</strong><br>
+            ① 空板用万用表量电源对地阻抗，排除短路风险<br>
+            ② 限流上电（1A限流），检查各供电节点电压是否正常<br>
+            ③ 空载验证U3输出极性，确保H桥开关逻辑正确<br>
+            ④ 装电机逐步加速，从10% PWM开始，每步验证电流波形<br>
+            ⑤ 全部通过后装入车架进行路面测试
+        </p>
+    </div>
+
+    <!-- ========== 七、实习总结 ========== -->
+    <h2>七、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天是PCB打样前的"最后一公里"——从上午的工艺参数确认到傍晚的DRC清零，看似琐碎的每一步都在为板子的成败把关。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>打样前的严谨不是过度谨慎：</strong>每一个工艺参数的确认、每一次供电口径的澄清，都是对产品负责的表现。一块板子从设计到打样需要3-5天，一个低级错误就意味着至少一周的延误——打样前的"最后一公里"恰恰是最不能放松的一公里。</li>
+            <li><strong>铺铜操作不是"一键完成"的：</strong>从铺铜不可见的低级错误，到优先级导致的铜皮吞没，今天的三个踩坑让我深刻理解了铺铜操作看似简单实则细节众多。铺铜不是最后一步，重建+DRC才是真正的收尾标志。</li>
+            <li><strong>DRC清零不是终点，而是起点：</strong>DRC通过只意味着设计没有违反电气规则，但板子能否正常工作还需要打样后的实物验证。真正的工程验证是从板子拿在手里那一刻开始的。</li>
+            <li><strong>标准化流程是经验的结晶：</strong>今日踩坑后沉淀出的"走线改完→铺铜→打过孔→重建铺铜→DRC"五步收尾流程，是对今天所有教训的最佳总结。工程能力的提升，就在于将每一次踩坑转化为可复用的流程规范。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            今天的核心成果是PCB终改完成、DRC清零，项目正式进入打样流程。从方案设计到打样前收尾，每一步都在逼近那个最终的目标——一块能真正驱动电机跑起来的底板。
+        </p>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月13日 · PCB终改与VM过孔阵列 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
