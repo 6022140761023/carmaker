@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月14日 物料下单与电机线缆准备实习日志</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+
+        /* ===== Typography ===== */
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 14px;
+            margin: 38px 0 16px;
+        }
+        h3 {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 22px 0 10px;
+        }
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 16px 0 8px;
+        }
+        p, li { font-size: 0.97rem; color: #334155; }
+        a { color: #2563eb; }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            margin-bottom: 14px;
+        }
+        .header .meta {
+            font-size: 0.92rem;
+            color: #64748b;
+            margin-top: 6px;
+        }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        /* ===== Card ===== */
+        .info-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid #e9edf2;
+            margin: 14px 0;
+        }
+
+        /* ===== Blockquote ===== */
+        blockquote {
+            background: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1e293b;
+        }
+        blockquote .attribution {
+            display: block;
+            margin-top: 6px;
+            font-style: normal;
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* ===== Tech Grid ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 12px 0;
+        }
+        .tech-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 1px solid #e9edf2;
+            border-radius: 14px;
+            padding: 18px;
+        }
+        .tech-card .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .tech-card .value {
+            font-size: 1.04rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 4px;
+        }
+        .tech-card .desc {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 6px;
+        }
+
+        /* ===== Tables ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        /* ===== Lists ===== */
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+
+        /* ===== Highlight Box ===== */
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+
+        /* ===== Ethics ===== */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px;
+            border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+
+        /* ===== Problem/Solution ===== */
+        .problem-item {
+            display: flex;
+            gap: 14px;
+            margin: 12px 0;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+
+        /* ===== Footer ===== */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div>
+            <h1>🔌 物料下单与电机线缆准备实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月14日</span>
+                <span>⏱ 下午实习（上午收尾 + 下午任务执行）</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">📦 供应链与硬件实践 · 打样已下单</span>
+        </div>
+    </div>
+
+    <!-- ========== 导读 ========== -->
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月14日的工程实践内容：上午完成物料下单收尾（保险丝选型定案、缺货替代、最终下单清单确认），下午执行电驱组任务——供电关系澄清、电机测试准备、电机线缆制作与固定方案调研。日志涵盖元器件选型决策、供应链管理、硬件装配实践与工程反思。
+    </p>
+
+    <!-- ========== 一、今日工作内容 ========== -->
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 上午：物料下单收尾</h3>
+    <p><strong>保险丝选型最终结论</strong>：对比多颗候选料后确认——用手头现有直插 PPTC（30V / I<sub>hold</sub> 2A / I<sub>trip</sub> 4A / I<sub>max</sub> 40A），参数与封装（P=10.5mm 直插）均匹配，<strong>零成本</strong>。</p>
+    <table>
+        <thead>
+            <tr><th>候选</th><th>淘汰原因</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>SMD1812-200-30（30V/2A）</td><td>1812 贴片封装，与板上直插焊盘不匹配</td></tr>
+            <tr><td>SMD1812-300-24（24V/3A）</td><td>贴片 + I<sub>hold</sub> 偏高，保护迟钝</td></tr>
+            <tr><td>SMD1206-100-30（30V/1A）</td><td>贴片 + I<sub>hold</sub> 仅 1A，堵转必误跳</td></tr>
+            <tr><td>H30-400（30V/4A，P=5.1mm）</td><td>直插但脚距 5.1mm ≠ 板上 10.5mm</td></tr>
+            <tr><td>H60-250（60V/2.5A，P=10.2mm）</td><td>脚距兼容、参数可用，但手头已有，无需购买</td></tr>
+            <tr><td>HRL30-500（30V/5A，P=10.5mm）</td><td>原 BOM 候选，无货且 I<sub>hold</sub> 5A 对 2A 堵转保护过钝</td></tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 6px; color: #475569;">
+        <strong>经验沉淀：</strong>PPTC 选型看 I<sub>hold</sub>（保持电流），不看 I<sub>max</sub>（耐烧电流）；封装脚距必须与板焊盘一致，贴片/直插不可互换。
+    </p>
+
+    <h3>1.2 缺货替代</h3>
+    <ul>
+        <li><strong>F1 保险丝</strong>：购物车内删除，用手头料（直插 PPTC）</li>
+        <li><strong>C1 电解电容</strong>（1000μF/35V）：承兴 D16 无货，替代为 <strong>科尼盛 DHG035M108L200S1AA</strong>（D13×L20，脚距 7.5mm 兼容，现货充足，0.62 元）</li>
+    </ul>
+
+    <h3>1.3 最终下单清单</h3>
+    <table>
+        <thead>
+            <tr><th>类别</th><th>项目</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>必购</strong></td><td>U1 TMI8720PD（C5259215）<br>Q1/Q2 AGM210MAP（C7431169）</td><td>核心芯片，手头无货</td></tr>
+            <tr><td><strong>免检库存后补购</strong></td><td>C1/C2/C3 电解、R1/R2 电阻、U2/U3 端子、U4 排针</td><td>fablab 或手头有则不买</td></tr>
+            <tr><td><strong>删除</strong></td><td>F1（用手头 PPTC）</td><td>零成本替代</td></tr>
+        </tbody>
+    </table>
+
+    <h3>1.4 工艺与贴片决策</h3>
+    <ul>
+        <li><strong>打板工艺</strong>：全部默认（1oz 铜、嘉立创紫、有铅喷锡、0.3mm 免费孔径、AOI+飞针全测），无需修改</li>
+        <li><strong>SMT 贴片</strong>：放弃（约 200 元超预算）。改为借热风返修台手焊 DFN。流程：废板练手 → 薄涂锡膏 → 热风 300~350°C 中速 → 焊后逐脚量通断 → 先焊 1 块验证再焊剩余 4 块</li>
+    </ul>
+
+    <h3>1.5 系统供电关系澄清</h3>
+    <p>电驱组全员对齐供电架构，红线不变：</p>
+    <div class="info-card">
+        <p style="font-family: monospace; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.5;">
+电源 12V/2A ──┬──→ 驱动板 U2（12V 输入）──→ Q1/Q2 功率级 ──→ U3 ──→ 电机
+              │                                    ↑
+              └──→ buck 降压模块 ──→ ESP32 (5V)    │ U1 栅极驱动（VM 取 12V）
+                      ↑                            ↑
+                  USB 调试用                  GPIO25/26 → U4 IN1/IN2（3.3V 逻辑）
+                                              GND → U4-3（必须共地）
+        </p>
+    </div>
+    <p>驱动板与 ESP32 电源独立，仅 IN1/IN2/GND 三线相连。U3 是驱动板输出（12V × PWM 占空比），不是外部供电口。buck 模块为外置独立模块，不占板内位号（位号规则：U=IC，Q=MOS/晶体管）。</p>
+
+    <h3>1.6 下午：电机线缆制作与固定方案</h3>
+    <ul>
+        <li><strong>电机测试（待电源发放）</strong>：计划 12V/2A 限流 → 裸测两个 RS-220 → 记录空载电流与转向 → 交换极性验证反转 → 对比两电机电流一致性</li>
+        <li><strong>电机线缆制作（进行中）</strong>：红/黑多股软线 0.5~0.75mm²（20~22AWG），长度 = 预估距离 + 20cm 裕量；电机端剥 5mm 上锡，焊电极片（350°C，2~3 秒内完成，防烫坏电机）；板端剥 5~7mm 上锡（或压冷压端子），适配 KF128-5.08 端子；两端贴标签（电机1+/电机1-/电机2+/电机2-）；质检用万用表蜂鸣档量通断、红黑间无短路</li>
+        <li><strong>电机固定方案（调研阶段）</strong>：RS-220 无统一官方 datasheet，行业典型尺寸——外径 20.4mm、壳长 24~25mm、轴径 2.0mm、轴伸 6~8mm。抱箍方案：3D 打印开口圆环，内径 = 实测外径 − 0.2~0.3mm（PLA 弹性夹紧），宽 15~20mm，M3 螺丝收紧，底座按车架孔距留 M3 孔。注意典型值批次差异可达 0.2~0.5mm，打印前必须用游标卡尺实测电机外径再定抱箍内径。轴连接：2mm 联轴器（淘宝现成或自打印），需先量车轮中心孔径</li>
+    </ul>
+
+    <!-- ========== 二、关键技术点 ========== -->
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 PPTC 保险丝选型逻辑</h3>
+    <table>
+        <thead>
+            <tr><th>参数</th><th>取值</th><th>选型依据</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>保持电流 I<sub>hold</sub></strong></td><td>2A</td><td>电机额定电流约 1~1.5A，I<sub>hold</sub> 略高于额定，确保正常运行不误跳</td></tr>
+            <tr><td><strong>跳闸电流 I<sub>trip</sub></strong></td><td>4A</td><td>堵转电流约 2~3A，I<sub>trip</sub> 覆盖堵转保护</td></tr>
+            <tr><td><strong>最大电压 V<sub>max</sub></strong></td><td>30V</td><td>系统 12V 供电，30V 额定足够</td></tr>
+            <tr><td><strong>封装脚距 P</strong></td><td>10.5mm</td><td>与板上直插焊盘匹配，直插/贴片不可互换</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.2 供电架构要点</h3>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="label">电源独立性</div>
+            <div class="value">驱动板 & ESP32 电源独立</div>
+            <div class="desc">仅 IN1/IN2/GND 三线相连，避免功率回路干扰控制回路</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">U3 输出</div>
+            <div class="value">12V × PWM 占空比</div>
+            <div class="desc">U3 是驱动板输出，不是外部供电口</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">buck 模块</div>
+            <div class="value">外置独立模块</div>
+            <div class="desc">不占板内位号（位号规则：U=IC，Q=MOS/晶体管）</div>
+        </div>
+        <div class="tech-card">
+            <div class="label">共地要求</div>
+            <div class="value">GND → U4-3 必须共地</div>
+            <div class="desc">确保控制信号有完整回流路径</div>
+        </div>
+    </div>
+
+    <!-- ========== 三、工程伦理与设计反思 ========== -->
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>📋 责任：BOM 管理中的成本意识</h4>
+            <p>
+                本次保险丝选型最终选择了手头零成本的直插 PPTC，而不是花冤枉钱另购新料。同时，对于核心芯片（TMI8720PD、AGM210MAP）坚持必购，对于库存可查的阻容和端子则免检后补——这种"该花的花、该省的省"的物料管理策略，是硬件工程师对项目经费负责任的表现。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔧 可靠：手焊 DFN 的工艺风险管控</h4>
+            <p>
+                放弃约 200 元的 SMT 贴片服务，改为热风返修台手焊 DFN，虽然节省了预算但引入了工艺风险。为此制定了严格的手焊流程：废板练手→薄涂锡膏→300~350°C 中速→焊后逐脚量通断→先焊 1 块验证再焊剩余 4 块。这种"先验证再批量"的策略最大限度地降低了手焊带来的可靠性风险。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📐 精准：机械装配的容差设计</h4>
+            <p>
+                电机固定方案中，3D 打印抱箍内径设定为"实测外径 − 0.2~0.3mm"，利用 PLA 材料的弹性实现夹紧；同时强调打印前必须用游标卡尺实测电机外径，因为典型值批次差异可达 0.2~0.5mm。这种"先实测后设计"的容差思维是机械装配中保证配合精度的关键。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🛡 安全：线缆质检的双重保障</h4>
+            <p>
+                电机线缆制作完成后，质检流程要求万用表蜂鸣档量通断 + 红黑间无短路。看似简单的两步操作，却同时确保了信号通路正常和电源回路无短路风险。在硬件装配中，每一根线的焊接质量都可能影响整车的安全运行。
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== 四、遇到的问题与解决 ========== -->
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：保险丝候选料繁多，如何快速确定最终方案？</strong>
+            <p>面对 6 颗候选料（贴片/直插/不同脚距/不同保持电流），需要快速筛选出与板上焊盘匹配、电性能合适的方案。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>第一步以"封装脚距"为硬约束——板上焊盘脚距 10.5mm，直接淘汰所有贴片封装和脚距不匹配的直插料。第二步以"I<sub>hold</sub> 略高于电机额定电流"为电性能约束——电机额定约 1~1.5A，选 I<sub>hold</sub>=2A。最终锁定手头现有的直插 PPTC，零成本完成选型。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：C1 电解电容缺货，如何快速找到替代料？</strong>
+            <p>承兴 D16 1000μF/35V 无货，需要找到脚距兼容、性能参数不降级的替代方案。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>在平台搜索兼容脚距（7.5mm）的 1000μF/35V 电解电容，锁定科尼盛 DHG035M108L200S1AA（D13×L20，脚距 7.5mm 兼容，现货充足，0.62 元），电性能参数一致，尺寸更紧凑（原 D16 改为 D13），反而更利于 PCB 布局。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题3：SMT 贴片超预算，DFN 封装如何手焊？</strong>
+            <p>200 元贴片费用超出学生项目预算，但 TMI8720PD 为 DFN 封装，引脚在底部，无法用普通烙铁焊接。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>借热风返修台手焊 DFN。制定严格工艺：① 先找废板练手熟悉热风枪操作；② 钢网（或手工）薄涂锡膏；③ 热风 300~350°C 中速吹焊；④ 焊后逐脚用万用表量通断，确认无虚焊/连焊；⑤ 先焊 1 块验证通过后再焊剩余 4 块，降低批量报废风险。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题4：RS-220 无官方 datasheet，如何确定固定方案？</strong>
+            <p>RS-220 无统一官方 datasheet，行业典型尺寸与实测可能存在 0.2~0.5mm 的批次差异，无法直接按典型值设计抱箍。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>采用"先实测后设计"策略——打印前用游标卡尺实测电机的实际外径，然后根据实测值设计抱箍内径（实测外径 − 0.2~0.3mm 过盈量），利用 PLA 材料的弹性实现夹紧固定。轴连接通过 2mm 联轴器，需先量车轮中心孔径确保匹配。
+        </div>
+    </div>
+
+    <!-- ========== 五、当前状态与下一步 ========== -->
+    <h2>五、当前状态与下一步</h2>
+
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>打板与物料下单</strong></td>
+                <td>✅ <span style="color: #16a34a; font-weight: 600;">已提交</span></td>
+                <td>嘉立创免费额度，5 块板；核心芯片已购，阻容端子免检后补</td>
+            </tr>
+            <tr>
+                <td><strong>线缆制作</strong></td>
+                <td>⏳ <span style="color: #f59e0b;">进行中</span></td>
+                <td>线材已准备，焊接与质检待完成</td>
+            </tr>
+            <tr>
+                <td><strong>电机尺寸实测</strong></td>
+                <td>⬜ <span style="color: #64748b;">待完成</span></td>
+                <td>需用游标卡尺实测外径后再打印抱箍</td>
+            </tr>
+            <tr>
+                <td><strong>电机通电测试</strong></td>
+                <td>⬜ <span style="color: #64748b;">待 12V 电源发放</span></td>
+                <td>计划 12V/2A 限流测试两个 RS-220</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p>
+            <strong>📋 板子回来后验证流程（交接文档第八节）：</strong><br>
+            ① 空板量 VM-GND 电阻 → ② 12V/2A 限流上电 → ③ 空载验证 U3 极性 → ④ 装电机 100 起步逐步至 255
+        </p>
+    </div>
+
+    <!-- ========== 六、实习总结 ========== -->
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天是项目从设计阶段走向实物阶段的关键一天——物料下单、线缆制作、固定方案调研同步推进，经历了从元器件选型到硬件装配的全链路实践。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>选型不仅是看参数，更是看"匹配"：</strong>保险丝选型过程中，6 颗候选料各有各的参数优势，但最终决定因素不是 I<sub>max</sub> 多大、封装多小，而是脚距是否和板上焊盘匹配、保持电流是否与负载匹配。好工程师的选型能力，体现在从一大堆"看起来都行"的选项中快速锁定真正能用的那一个。</li>
+            <li><strong>供应链管理是硬件工程师的必修课：</strong>缺货替代、库存核查、成本控制——今天的物料下单过程让我意识到，硬件设计不只是画原理图、画 PCB，确保元器件能买到、买得起、按时到货同样重要。一个设计再好的板子，如果芯片买不到就是一张废纸。</li>
+            <li><strong>预算约束激发工程创造力：</strong>放弃 200 元的 SMT 贴片服务，改为热风枪手焊 DFN——虽然增加了工艺难度，但制定了严格的"先验证后批量"流程来管控风险。预算约束不是限制，而是推动工程师用更低成本实现同等功能的创新动力。</li>
+            <li><strong>机械与电子的交叉思维：</strong>今天的电机固定方案调研让我意识到，电机外径 0.2~0.5mm 的批次差异对于电子工程师可能忽略不计，但对于 3D 打印抱箍却是决定能否装上去的关键。硬件系统是电子+机械+软件的融合，跨学科思考才能真正做好一个产品。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            今天的核心成果是物料下单完成、线缆制作推进中、供电关系全员对齐。项目正式从"设计阶段"迈向"实物装配阶段"——板子在路上了，线在手里了，电机在桌上了，距离一块能真正驱动电机跑起来的底板又近了一步。
+        </p>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月14日 · 物料下单与电机线缆准备 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
