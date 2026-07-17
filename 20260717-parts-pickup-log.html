@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月17日 零件清点领取与铝材切割实习日志</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+        h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 6px; }
+        h2 {
+            font-size: 1.35rem; font-weight: 600; color: #0f172a;
+            border-left: 5px solid #3b82f6; padding-left: 14px; margin: 38px 0 16px;
+        }
+        h3 { font-size: 1.08rem; font-weight: 600; color: #1e293b; margin: 22px 0 10px; }
+        h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin: 16px 0 8px; }
+        p, li { font-size: 0.97rem; color: #334155; }
+        .header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 14px;
+        }
+        .header .meta { font-size: 0.92rem; color: #64748b; margin-top: 6px; }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block; background: #dbeafe; color: #1d4ed8;
+            font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-top: 6px;
+        }
+        .info-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px 20px;
+            border: 1px solid #e9edf2; margin: 14px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem;
+        }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+        tr:last-child td { border-bottom: none; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        .highlight-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+        .ethics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px; border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+        .problem-item {
+            display: flex; gap: 14px; margin: 12px 0; padding: 14px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;
+            text-align: center; color: #94a3b8; font-size: 0.88rem;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🔩 零件清点领取与铝材切割实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月17日</span>
+                <span>⏱ 全天</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🛠 硬件装配阶段 · 零件领料与型材预处理</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月17日的工程实践内容：上午对照修改后BOM清单在仓库/fablab现场逐项清点并领取全部零件（型材、角件、紧固件），下午对19根铝型材进行标注、切割与去毛刺预处理。日志涵盖零件领料、机械加工与装配准备。
+    </p>
+
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 上午：现场零件清点与领取</h3>
+    <p>对照修改后BOM清单，在仓库/fablab现场逐项清点并领取全部零件：</p>
+    <table>
+        <thead>
+            <tr><th>序号</th><th>零件</th><th>领取数量</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>40×40 铝型材（各规格）</td><td>19根（详见下表）</td><td>✅ 已领</td></tr>
+            <tr><td>2</td><td>40×39 角件/角码</td><td>40</td><td>✅ 已领</td></tr>
+            <tr><td>3</td><td>圆头法兰螺丝 M8×16</td><td>120</td><td>✅ 已领</td></tr>
+            <tr><td>4</td><td>通用连接器</td><td>30</td><td>✅ 已领</td></tr>
+            <tr><td>5</td><td>后置式T型螺母 M8</td><td>60</td><td>✅ 已领</td></tr>
+            <tr><td>6</td><td>角件端盖</td><td>40</td><td>✅ 已领</td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>铝型材领取详情：</strong></p>
+    <table>
+        <thead>
+            <tr><th>长度</th><th>BOM数量</th><th>实际领取</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>150mm</td><td>6</td><td>6</td><td>—</td></tr>
+            <tr><td>230mm</td><td>7</td><td>7</td><td>—</td></tr>
+            <tr><td>400mm</td><td>2</td><td>2</td><td>—</td></tr>
+            <tr><td>440mm</td><td>2</td><td>2</td><td>—</td></tr>
+            <tr><td>1000mm</td><td>2</td><td>2</td><td>—</td></tr>
+            <tr><td><strong>合计</strong></td><td><strong>19根</strong></td><td><strong>19根</strong></td><td><strong>总长约6米</strong></td></tr>
+        </tbody>
+    </table>
+
+    <h3>1.2 下午：铝材标注与切割</h3>
+    <p><strong>步骤1：用笔标注分割</strong></p>
+    <ul>
+        <li>按BOM各规格长度，在铝材上用记号笔逐根标切割线</li>
+        <li>标注内容：长度尺寸 + 零件号简写 + 序号，防止切割后混淆</li>
+        <li>示例：<code>230-#6-①</code>、<code>1000-#4-①</code></li>
+    </ul>
+    <p><strong>步骤2：现场参与铝材切割</strong></p>
+    <ul>
+        <li>使用型材切割机/锯床，按标注线逐根切割</li>
+        <li>切割要点：夹紧型材防止切口倾斜；切口去毛刺（锉刀或砂纸）防止划伤和装配干涉；切割后复测长度，误差控制在±1mm内</li>
+    </ul>
+    <p><strong>切割成果：</strong></p>
+    <ul>
+        <li>19根型材全部切割完成</li>
+        <li>切口平整，毛刺已处理</li>
+        <li>按规格分类摆放，标签清晰</li>
+    </ul>
+
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 切割顺序优化</h3>
+    <div class="info-card">
+        <p><strong>最优切割顺序：</strong>先切最长的（1000mm）→ 再切中短的（440mm、400mm、230mm）→ 最后切最短的（150mm），最大限度减少废料。</p>
+    </div>
+
+    <h3>2.2 标注规范</h3>
+    <table>
+        <thead>
+            <tr><th>标注格式</th><th>示例</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><code>长度-零件号-序号</code></td><td><code>230-#6-①</code></td><td>长度230mm，第6号零件，第1根</td></tr>
+        </tbody>
+    </table>
+
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>📋 责任：零件领取的逐项核对</h4>
+            <p>
+                19根铝型材、40个角件、120颗螺丝——领料时对照BOM逐项清点不是形式主义，而是对施工过程的负责。缺一颗螺丝可能不会影响全局，但缺一根型材就意味着整个装配流程中断。逐项核对、签字确认，是硬件装配的第一道关口。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔧 精准：标注-切割-去毛刺的三步工序</h4>
+            <p>
+                先标注再切割、切割后立即去毛刺、最后复测长度——这三步看似繁琐，但跳过任何一步都会影响后续装配质量。切口倾斜会导致角件安装不垂直，毛刺不处理会划伤操作者或导致拼接面不贴合。好的工序设计，是把问题消灭在源头。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🛠 效率：切割顺序的工程思维</h4>
+            <p>
+                "先长后短"的切割顺序不是随便定的——从1000mm的型材上先切出最长需要的尺寸，剩下的余料还可以切出更短的规格，最大化材料利用率。这种"排料优化"思维在工业生产中直接决定材料成本，在小批量制作中同样值得坚持。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📐 协作：电驱与车架的接口对齐</h4>
+            <p>
+                电机安装座需要230mm型材×7根，电池支架同样依赖型材搭建——电驱系统的固定方案与车架结构必须同步推进。今天切割的19根型材中，有相当一部分是为电驱系统预留的安装位置，这要求电驱组与车架组在装配前对齐接口尺寸。
+            </p>
+        </div>
+    </div>
+
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：切割后型材切口不平整</strong>
+            <p>型材切割时如果夹紧不牢固，切口容易倾斜，影响后续角件安装精度。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>切割前确保型材在锯床上夹紧，切割时匀速推进，切割后立即用锉刀或砂纸去毛刺，复测长度确保误差在±1mm内。
+            <br><strong>教训：</strong>切口去毛刺是必要步骤，跳过会导致型材拼接面不贴合。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：多规格型材切割后容易混淆</strong>
+            <p>19根型材涵盖5种不同长度规格，切割后如果不做标记，装配时很难快速找到对应尺寸。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>切割前在每根型材上用记号笔标注"长度+零件号+序号"（如<code>230-#6-①</code>），切割后按规格分类摆放，标签清晰可见。
+            <br><strong>教训：</strong>标注时同时写零件号和长度，切割后容易辨认。
+        </div>
+    </div>
+
+    <h2>五、当前状态与下一步</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>零件领取</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>19根型材 + 全部连接件/紧固件已领取</td>
+            </tr>
+            <tr>
+                <td><strong>铝材切割</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>19根全部切割完成，去毛刺、复测、分类摆放</td>
+            </tr>
+            <tr>
+                <td><strong>车架拼装</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>用角件+螺丝+T型螺母按骨架设计图拼装</td>
+            </tr>
+            <tr>
+                <td><strong>后轮/转向安装</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>安装后轮轴杆（63cm）和转向机构</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p><strong>📋 经验沉淀：</strong><br>
+        ① 铝材领取时务必复测总长度，防止供应商短尺<br>
+        ② 标注时同时写零件号和长度，切割后容易辨认<br>
+        ③ 切口去毛刺是必要步骤，跳过会导致型材拼接面不贴合<br>
+        ④ 切割顺序：先切最长的，再切中短的，最后切最短的，减少废料</p>
+    </div>
+
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天完成了零件清点领取和铝材切割两项核心任务，从仓库领料到机械加工，经历了一次完整的硬件装配前准备工作。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>领料不是"拿东西"，而是"对账"：</strong>对照BOM逐项清点、逐笔确认——120颗螺丝、60个螺母、40个角件，任何一个数字出错都会影响后续装配。硬件装配的第一步不是拧螺丝，而是确认你有正确的螺丝可拧。</li>
+            <li><strong>切割的精度决定装配的精度：</strong>19根型材、5种规格，每根误差控制在±1mm以内。一个±1mm的误差看似微不足道，但当7根230mm型材同时偏差时，车架的整体尺寸就偏了。好的装配从好的切割开始。</li>
+            <li><strong>标注是防止混乱的第一道防线：</strong>在每根型材上写"230-#6-①"这样的标签，只需要10秒钟，但在装配时节省的寻找时间是以小时计的。工程中的每一个小习惯，积累起来就是效率的质变。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            总而言之，今天完成了物料准备从"清单"到"实物"的关键一步——19根型材已切割完毕，所有紧固件已就位，为整车拼装做好了物料准备。
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月17日 · 零件清点领取与铝材切割 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
