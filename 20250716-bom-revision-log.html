@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月16日 车架BOM修订与车辆实测实习日志</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+        h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 6px; }
+        h2 {
+            font-size: 1.35rem; font-weight: 600; color: #0f172a;
+            border-left: 5px solid #3b82f6; padding-left: 14px; margin: 38px 0 16px;
+        }
+        h3 { font-size: 1.08rem; font-weight: 600; color: #1e293b; margin: 22px 0 10px; }
+        h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin: 16px 0 8px; }
+        p, li { font-size: 0.97rem; color: #334155; }
+        .header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 14px;
+        }
+        .header .meta { font-size: 0.92rem; color: #64748b; margin-top: 6px; }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block; background: #dbeafe; color: #1d4ed8;
+            font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-top: 6px;
+        }
+        .info-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px 20px;
+            border: 1px solid #e9edf2; margin: 14px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem;
+        }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+        tr:last-child td { border-bottom: none; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        .highlight-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+        .ethics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px; border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+        .problem-item {
+            display: flex; gap: 14px; margin: 12px 0; padding: 14px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;
+            text-align: center; color: #94a3b8; font-size: 0.88rem;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🔩 车架BOM修订与车辆实测实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月16日</span>
+                <span>⏱ 全天</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🚗 硬件装配准备 · 车架物料清单最终确认</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月16日的工程实践内容：根据车架实际组装需求，对原物料清单进行修订，确定型材、连接件、紧固件数量，并对车辆骨架关键尺寸进行实测记录（后轮系统、转向系统）。日志涵盖BOM管理、机械装配与整车架构设计。
+    </p>
+
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 车架BOM物料清单修订</h3>
+    <p>根据车架实际组装需求，对原物料清单进行修订，确保型材、连接件、紧固件数量满足整车架构搭建。</p>
+    <table>
+        <thead>
+            <tr><th>位置</th><th>名称</th><th>数量</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1~6</td><td>40×40 铝型材（6种规格）</td><td>共19根</td><td>150mm×2+400mm×2+440mm×2+1000mm×2+150mm×4+230mm×7</td></tr>
+            <tr><td>7</td><td>40×39 角件/角码</td><td>40</td><td>粉末涂层</td></tr>
+            <tr><td>8</td><td>圆头法兰螺丝 M8×16</td><td>120</td><td>原55→120，取两倍向上取整</td></tr>
+            <tr><td>9</td><td>通用连接器</td><td>30</td><td>原28→30</td></tr>
+            <tr><td>10</td><td>后置式T型螺母 M8（带弹簧）</td><td>60</td><td>原55→60</td></tr>
+            <tr><td>11</td><td>角件端盖</td><td>40</td><td>与角件1:1配比</td></tr>
+        </tbody>
+    </table>
+
+    <h3>1.2 数量校验</h3>
+    <ul>
+        <li><strong>螺丝120 + 螺母60 = 2:1配比</strong>：每颗螺丝配一个螺母，符合标准紧固逻辑</li>
+        <li><strong>连接点总数</strong>：40角件 + 30通用连接器 = 70个连接点</li>
+        <li><strong>螺丝冗余度</strong>：120/70 ≈ 1.7倍，预留损耗和调整余量</li>
+        <li><strong>型材总量</strong>：150×2+400×2+440×2+1000×2+150×4+230×7 = 4,810mm ≈ 4.8米</li>
+    </ul>
+
+    <h3>1.3 车辆骨架实测</h3>
+    <p><strong>后轮系统：</strong></p>
+    <ul>
+        <li>后轮杆（轴杆）：<strong>63cm</strong>，后轴总长度含两侧伸出量</li>
+        <li>轮胎外径：<strong>26cm</strong>，半径13cm，决定车架离地间隙</li>
+    </ul>
+    <p><strong>转向系统：</strong></p>
+    <ul>
+        <li>转向片两圆心间距：<strong>35cm</strong>，两片转向盘的安装孔距</li>
+        <li>转向片中心距：<strong>27.5cm</strong>，转向中心到车架中心线的距离</li>
+        <li>转向片外侧距：<strong>31cm</strong>，转向片外侧边缘到同一基准的距离</li>
+    </ul>
+
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 型材规格分布</h3>
+    <table>
+        <thead>
+            <tr><th>长度</th><th>数量</th><th>用途推测</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1000mm</td><td>2</td><td>车架纵梁/主梁</td></tr>
+            <tr><td>440mm</td><td>2</td><td>前轮/后轮安装横梁</td></tr>
+            <tr><td>400mm</td><td>2</td><td>中层结构横梁</td></tr>
+            <tr><td>230mm</td><td>7</td><td>短支撑/电机安装座/电池支架</td></tr>
+            <tr><td>150mm</td><td>6</td><td>加强筋/小型连接件/端部支撑</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.2 实测数据与型材对照</h3>
+    <table>
+        <thead>
+            <tr><th>实测部件</th><th>实测长度</th><th>对应型材</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>后轮杆</td><td>63cm</td><td>1000mm纵梁需切割适配</td></tr>
+            <tr><td>轮胎外径</td><td>26cm</td><td>决定车架离地高度13cm</td></tr>
+            <tr><td>转向片圆心距</td><td>35cm</td><td>400mm型材可覆盖</td></tr>
+            <tr><td>转向片中心距</td><td>27.5cm</td><td>230mm型材适配</td></tr>
+        </tbody>
+    </table>
+
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>📋 责任：BOM管理的精确性</h4>
+            <p>
+                螺丝从55颗调整到120颗，看似简单的数字变化，背后是对装配过程"损耗"和"余量"的工程判断。一颗多余的螺丝比缺少一颗螺丝要好——物料短缺会导致装配中断，而合理的冗余度确保了装配过程的连续性。BOM管理不只是一张表格，而是对施工过程的预先规划。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📐 精准：先实测后设计的工程原则</h4>
+            <p>
+                后轮杆63cm、轮胎外径26cm、转向片圆心距35cm——这些实测数据不是从图纸上读来的，而是用尺子量出来的。在硬件装配中，理论尺寸和实际尺寸之间总是存在偏差，只有亲自测量才能获得真实可靠的数据。这种"先实测后设计"的原则是机械装配的基本功。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔗 系统：电驱与车架的接口匹配</h4>
+            <p>
+                车架BOM的修订虽然由车架组主导，但电机安装座（230mm型材×7）、电池支架等结构直接影响电驱系统的安装。电驱系统的尺寸设计必须与车架结构协调——电机固定抱箍的孔径、电池仓的安装位置、线缆走向等都需要在车架搭建前对齐。跨组协作不是各做各的，而是接口对齐。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🛠 效率：标准化紧固件的选型策略</h4>
+            <p>
+                全部采用M8标准螺丝和螺母，统一规格减少了工具切换次数（只需一把8mm套筒），也降低了装配出错的概率。在工程实践中，标准化带来的效率提升往往被低估——当70个连接点都需要拧紧时，统一规格意味着可以流水线式作业。
+            </p>
+        </div>
+    </div>
+
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：原BOM螺丝数量55颗是否够用？</strong>
+            <p>70个连接点，如果每点至少1颗螺丝，加上损耗和调整余量，55颗明显不足。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>将螺丝数量从55调整到120（取两倍向上取整），螺母从55调整到60，保持2:1配比。螺丝冗余度120/70≈1.7倍，预留损耗和调整余量。同时通用连接器从28调整到30。
+            <br><strong>教训：</strong>紧固件数量不能卡着理论值，必须考虑现场损耗和装配余量。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：车辆骨架关键尺寸未知，如何确定型材适配？</strong>
+            <p>转向片间距、后轮杆长度等关键尺寸未记录，无法确定型材是否覆盖装配需求。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>对整车关键部位进行实测：后轮杆63cm、轮胎外径26cm（半径13cm离地间隙）、转向片圆心距35cm、转向片中心距27.5cm、转向片外侧距31cm。将这些数据与型材长度对照，确认1000mm/400mm/230mm型材可分别覆盖对应装配需求。
+            <br><strong>教训：</strong>理论计算不能替代实物测量，型材选型必须以实测数据为依据。
+        </div>
+    </div>
+
+    <h2>五、当前状态与下一步</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>车架BOM修订</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>型材/连接件/紧固件数量已确认，冗余合理</td>
+            </tr>
+            <tr>
+                <td><strong>车辆骨架实测</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>后轮系统/转向系统关键尺寸已记录</td>
+            </tr>
+            <tr>
+                <td><strong>型材切割与装配</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>下一步进入型材切割和整车搭建</td>
+            </tr>
+            <tr>
+                <td><strong>PCB到货与焊接</strong></td>
+                <td>⏳ <span style="color:#f59e0b;">等待中</span></td>
+                <td>嘉立创5块板，到货后焊接验证</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p><strong>📋 后续关键任务：</strong><br>
+        ① 3D打印件和转向连杆设计可直接引用本次实测数据<br>
+        ② 型材切割后进入转向机构装配<br>
+        ③ 整车搭建时注意电驱安装座与车架接口对齐</p>
+    </div>
+
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天完成了车架BOM的修订和车辆骨架实测，从物料清单管理到整车尺寸测量，经历了一次完整的机械装配前准备工作。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>BOM管理不是填表格，而是对施工过程的规划：</strong>螺丝从55颗调整到120颗，螺母从55调整到60，这些调整背后是对现场损耗、装配冗余和施工效率的综合考量。好的BOM不是"刚刚够"，而是"够用还有余"。</li>
+            <li><strong>实测数据是机械装配的基石：</strong>后轮杆63cm、轮胎外径26cm、转向片间距35cm——这些用尺子量出来的数据，比任何图纸上的理论值都更可靠。在硬件装配中，相信你的尺子，而不是你的计算。</li>
+            <li><strong>标准化带来效率：</strong>全部采用M8标准紧固件，意味着整个装配过程只需要一把8mm套筒。这种看似简单的统一规格决策，在实际施工中节省了大量工具切换时间。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            总而言之，今天确定了车架物料清单和关键尺寸数据，为后续整车搭建做好了物料和数据准备。
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月16日 · 车架BOM修订与车辆实测 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
