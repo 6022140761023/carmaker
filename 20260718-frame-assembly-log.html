@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月18日 车架加工与机械总装 Day 10 实习日志</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+        h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 6px; }
+        h2 {
+            font-size: 1.35rem; font-weight: 600; color: #0f172a;
+            border-left: 5px solid #3b82f6; padding-left: 14px; margin: 38px 0 16px;
+        }
+        h3 { font-size: 1.08rem; font-weight: 600; color: #1e293b; margin: 22px 0 10px; }
+        h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin: 16px 0 8px; }
+        p, li { font-size: 0.97rem; color: #334155; }
+        .header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 14px;
+        }
+        .header .meta { font-size: 0.92rem; color: #64748b; margin-top: 6px; }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block; background: #dbeafe; color: #1d4ed8;
+            font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-top: 6px;
+        }
+        .info-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px 20px;
+            border: 1px solid #e9edf2; margin: 14px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem;
+        }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+        tr:last-child td { border-bottom: none; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        .highlight-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+        .warning-box {
+            background: #fef2f2; border: 1px solid #fecaca;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .warning-box strong { color: #dc2626; }
+        .ethics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px; border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+        .problem-item {
+            display: flex; gap: 14px; margin: 12px 0; padding: 14px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;
+            text-align: center; color: #94a3b8; font-size: 0.88rem;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🔧 车架加工与机械总装 Day 10 实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月18日</span>
+                <span>⏱ 全天</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🛠 金工实践 · 铝型材车架加工与组装</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月18日的工程实践内容——金工实践：铝型材车架加工与组装。上午进行材料准备与下料（划线、测量、切割、去毛刺），下午由本人负责角码固定（给角件上螺丝、拧螺母，完成型材框架固定），最终完成金属车架主体组装。日志涵盖金工操作、装配工艺与质量控制。
+    </p>
+
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 上午：材料准备与下料</h3>
+    <ul>
+        <li>根据图纸领取铝型材、角件、螺丝、螺母等材料</li>
+        <li>对型材进行划线、测量、标记切割位置</li>
+        <li>使用切割机完成型材下料，切口去毛刺</li>
+    </ul>
+
+    <h3>1.2 下午：车架组装——角码固定（本人负责）</h3>
+    <p><strong>核心任务：</strong>给角码（角件）上螺丝、拧螺母，完成型材框架固定。</p>
+    <p><strong>操作要点：</strong></p>
+    <ul>
+        <li>后置式 T 型螺母（带弹簧）先塞入型材槽内，滑动到对应位置</li>
+        <li>角码对准型材连接处，螺丝穿过角码孔拧入 T 型螺母</li>
+        <li>先用手拧到底，再用工具（内六角/扳手）拧紧，确保框架不晃动</li>
+        <li><strong>对角线方向依次拧紧</strong>，防止框架扭曲变形</li>
+        <li>四个角码同步固定，边装边用直角尺检查垂直度</li>
+    </ul>
+
+    <div class="warning-box">
+        <p><strong>⛔ 质量红线：禁止使用扎带和胶带固定</strong> — 所有连接必须用角码 + 螺丝 + T 型螺母完成。螺丝拧紧后无松动，型材接缝贴合紧密。框架整体方正，<strong>对角线误差 ≤ 2mm</strong>。</p>
+    </div>
+
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 角码固定工艺</h3>
+    <table>
+        <thead>
+            <tr><th>步骤</th><th>操作</th><th>要点</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>T 型螺母入槽</td><td>带弹簧的后置式螺母先塞入型材槽内，滑动到位</td></tr>
+            <tr><td>2</td><td>角码对位</td><td>角码对准型材连接处，确保孔位对齐</td></tr>
+            <tr><td>3</td><td>手拧预紧</td><td>螺丝穿过角码孔拧入 T 型螺母，先用手拧到底</td></tr>
+            <tr><td>4</td><td>工具拧紧</td><td>用内六角/扳手拧紧，确保框架不晃动</td></tr>
+            <tr><td>5</td><td>对角线顺序</td><td>对角线方向依次拧紧，防止扭曲变形</td></tr>
+            <tr><td>6</td><td>垂直度检查</td><td>边装边用直角尺检查，确保框架方正</td></tr>
+        </tbody>
+    </table>
+
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>🔧 工艺纪律：禁止扎带和胶带</h4>
+            <p>
+                车架组装的质量红线——所有连接必须用角码+螺丝+T型螺母完成，禁止扎带和胶带。这条规则看似严苛，实则是对产品安全性的底线约束。扎带和胶带在静态下可能暂时"固定"，但在整车行驶的振动环境中会快速失效。工程中的"禁止"不是限制，而是对失效模式的预判和规避。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📐 精度：对角线误差 ≤ 2mm</h4>
+            <p>
+                框架对角线误差控制在 2mm 以内——这不是一个"差不多就行"的松指标。车架是整个车辆的骨架，如果框架不正，后续的轮轴安装、转向机构对齐、电机座定位都会产生累积误差。2mm 的精度要求，是对整车装配质量的系统性负责。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔄 工艺：对角线拧紧顺序</h4>
+            <p>
+                四个角码不是随便哪个先拧紧都行——采用对角线方向依次拧紧，是机械装配中的经典手法。如果沿着一个方向顺序拧紧，应力会集中在最后一颗螺丝上，导致框架扭曲变形。对角拧紧保证了应力均匀分布，这是用经验换来的工艺智慧。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🤝 协作：电驱与车架的同步推进</h4>
+            <p>
+                车架主体组装完成意味着整车项目迈出了从"零件"到"整机"的关键一步。作为电驱组负责人参与车架角码固定工作，不仅是在帮车架组干活，更是为了提前熟悉车架结构——电机安装座、电池仓位置、线缆走向都需要在车架拼装阶段就对齐接口。
+            </p>
+        </div>
+    </div>
+
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：顺序拧紧导致框架轻微扭曲</strong>
+            <p>刚开始组装时沿一个方向顺序拧紧角码，发现框架有轻微扭曲，直角尺检查不通过。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>改为对角线方向依次拧紧——先拧左上和右下，再拧右上和左下，最后逐颗复紧。应力分布均匀后，框架方正度达标。
+            <br><strong>教训：</strong>顺序拧紧会导致应力集中，对角线拧紧是保证框架方正的标准工艺。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：T 型螺母在型材槽内滑动定位不准</strong>
+            <p>后置式 T 型螺母虽然带弹簧，但塞入型材槽后容易滑动偏移，导致角码孔位对不准。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>先用手拧入螺丝将 T 型螺母预定位，再将角码对准后拧紧。利用弹簧的弹性将螺母固定在槽内，防止滑动。
+            <br><strong>教训：</strong>T 型螺母的弹簧设计就是为了防止滑动的，预紧时手拧到位即可自动定位。
+        </div>
+    </div>
+
+    <h2>五、目标产出与下一步</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>金属车架主体组装</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>角码固定完成，对角线误差 ≤ 2mm</td>
+            </tr>
+            <tr>
+                <td><strong>钻孔安装孔位</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>电机座、电池盒、座椅固定点钻孔</td>
+            </tr>
+            <tr>
+                <td><strong>机械总装</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>前后轮 → 转向机构 → 电机 → 电池仓 → 座椅</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p><strong>📋 下一步启动机械总装流程：</strong><br>
+        ① 钻孔安装电机座、电池盒、座椅固定点<br>
+        ② 安装前后轮<br>
+        ③ 组装转向机构<br>
+        ④ 安装电机和电池仓<br>
+        ⑤ 安装座椅</p>
+    </div>
+
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天是金工实践日——从上午的型材下料到下午的角码固定，亲手参与了铝型材车架从零到一的组装过程。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>工艺纪律是安全的底线：</strong>"禁止扎带和胶带"这一质量红线，让我深刻理解了为什么工程规范不能妥协。扎带固定看起来"也行"，但在振动和负载条件下就是失效隐患。好的车架不是"看起来牢固"，而是"在极限条件下仍然可靠"。</li>
+            <li><strong>对角线拧紧不是技巧，是标准：</strong>顺序拧紧导致扭曲的教训让我记住了——任何需要多颗螺丝固定的场景，都必须采用对角线/十字交叉的顺序。这不是技巧，这是机械装配的基本标准。</li>
+            <li><strong>2mm 的精度要求是对整车负责：</strong>看似"差不多"的 2mm 对角线误差，其实是整车装配质量的起点。车架不正，一切后续安装都会产生累积偏差。工程中的每一个公差，都是经过计算和验证的。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            总而言之，今天完成了金属车架主体组装，为后续机械总装（前后轮、转向机构、电机、电池仓、座椅）提供了刚性基础。从一颗螺丝开始，车架从图纸变成了实物。
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月18日 · 车架加工与机械总装 Day 10 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
