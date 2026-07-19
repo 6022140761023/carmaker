@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月19日 PCB焊接完成与双电机驱动方案确定实习日志</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+        h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 6px; }
+        h2 {
+            font-size: 1.35rem; font-weight: 600; color: #0f172a;
+            border-left: 5px solid #3b82f6; padding-left: 14px; margin: 38px 0 16px;
+        }
+        h3 { font-size: 1.08rem; font-weight: 600; color: #1e293b; margin: 22px 0 10px; }
+        h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin: 16px 0 8px; }
+        p, li { font-size: 0.97rem; color: #334155; }
+        .header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 14px;
+        }
+        .header .meta { font-size: 0.92rem; color: #64748b; margin-top: 6px; }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block; background: #dbeafe; color: #1d4ed8;
+            font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-top: 6px;
+        }
+        .info-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px 20px;
+            border: 1px solid #e9edf2; margin: 14px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem;
+        }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+        tr:last-child td { border-bottom: none; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        .highlight-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+        .warning-box {
+            background: #fef2f2; border: 1px solid #fecaca;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .warning-box strong { color: #dc2626; }
+        .ethics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px; border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+        .problem-item {
+            display: flex; gap: 14px; margin: 12px 0; padding: 14px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;
+            text-align: center; color: #94a3b8; font-size: 0.88rem;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🔬 PCB焊接完成与双电机驱动方案确定实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月19日</span>
+                <span>⏱ 全天</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🛠 硬件焊接与系统架构决策</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月19日的工程实践内容——使用热风返修台完成第一块电驱板的SMT贴片手焊（U1 TMI8720PD、Q1/Q2 AGM210MAP）和插件元件焊接，并讨论确定了双电机驱动方案（放弃并联驱动，采用双板独立驱动方案）。日志涵盖手工焊接工艺与系统架构决策。
+    </p>
+
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 PCB焊接</h3>
+    <p><strong>SMT贴片手焊：</strong></p>
+    <ul>
+        <li>对 U1（TMI8720PD，DFN-10-EP）和 Q1/Q2（AGM210MAP，PDFN-8）进行热风手焊</li>
+        <li>使用热风返修台 300~350°C，焊锡膏辅助</li>
+        <li>注意芯片摆放方向和引脚对齐，焊后目视检查 EP 焊盘吃锡情况</li>
+    </ul>
+    <p><strong>插件元件焊接：</strong></p>
+    <ul>
+        <li>焊接 F1（PPTC 保险丝 H60-250）、C1/C2/C3（电解电容）、R1/R2（贴片电阻）</li>
+        <li>U2/U3（MKDS 接线端子）、U4（1×6P 排针）</li>
+        <li><strong>特别注意电解电容正负极方向</strong>（长脚为正，壳体带灰色条为负）</li>
+        <li>保险丝、端子焊牢，保证机械强度和过流能力</li>
+    </ul>
+
+    <h3>1.2 双电机驱动方案讨论</h3>
+    <table>
+        <thead>
+            <tr><th>方案</th><th>描述</th><th>结论</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>方案A：并联驱动</strong></td>
+                <td>两个后轮电机并联到同一块板的 U3 端子</td>
+                <td>❌ <span style="color:#dc2626;font-weight:600;">放弃</span> — 两轮强制同速，无法满足差速转向需求</td>
+            </tr>
+            <tr>
+                <td><strong>方案B：双板独立驱动</strong></td>
+                <td>两块电驱板各驱动一个后轮电机，独立调速</td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">采用</span> — 可控性强，支持差速和原地转向</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="info-card">
+        <p style="font-family: monospace; font-size: 0.88rem; white-space: pre-wrap; line-height: 1.5;">
+ESP32 GPIO25 ──→ 板1 IN1  ──→ 左轮电机
+ESP32 GPIO26 ──→ 板1 IN2
+ESP32 GPIO27 ──→ 板2 IN1  ──→ 右轮电机
+ESP32 GPIO28 ──→ 板2 IN2
+ESP32 GND    ──→ 板1 U4-3 ──→ 板2 U4-3（共地）
+12V 母线     ──→ 板1 U2-1 ──→ 板2 U2-1
+        </p>
+    </div>
+
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 DFN/PDFN 热风手焊工艺</h3>
+    <table>
+        <thead>
+            <tr><th>步骤</th><th>操作</th><th>要点</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>焊盘涂锡膏</td><td>薄涂均匀，避免连焊</td></tr>
+            <tr><td>2</td><td>摆放芯片</td><td>对齐引脚和焊盘，注意方向标记</td></tr>
+            <tr><td>3</td><td>热风焊接</td><td>300~350°C 中速吹焊，焊锡熔化后移开</td></tr>
+            <tr><td>4</td><td>目视检查</td><td>EP焊盘吃锡情况，引脚是否连焊</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.2 双板驱动架构</h3>
+    <div class="highlight-box">
+        <p><strong>方案B 核心优势：</strong></p>
+        <ul>
+            <li>左右轮独立调速，支持差速转向</li>
+            <li>可实现原地转向（两轮反向转动）</li>
+            <li>单板故障时另一板仍可工作</li>
+            <li>接线清晰，调试方便</li>
+        </ul>
+    </div>
+
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>🛠 工艺：热风手焊的风险管控</h4>
+            <p>
+                DFN 封装手焊是本次实习中工艺难度最高的环节——引脚在芯片底部不可见，温度过高可能损坏芯片，锡膏过多可能导致连焊。通过控制温度 300~350°C、薄涂锡膏、焊后目视检查 EP 焊盘吃锡情况，最大限度降低手焊风险。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔌 安全：电解电容极性验证</h4>
+            <p>
+                电解电容接反会爆裂——这不是危言耸听。焊接前用万用表确认极性（长脚为正、壳体灰色条为负），焊接后再次目视检查。一个简单的极性检查动作，可以避免整块板子报废甚至安全事故。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>⚙ 系统：双板方案的工程权衡</h4>
+            <p>
+                并联驱动（方案A）省一块板子但牺牲了差速能力——对于一辆需要灵活转向的卡丁车来说，这是不可接受的。双板方案（方案B）虽然增加了物料成本和接线复杂度，但换来了可控性、可靠性和扩展性。工程决策不是选"最便宜的"，而是选"最合适的"。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📋 规范：焊接工艺的可复现性</h4>
+            <p>
+                第一块板的焊接过程记录了详细的工艺参数（温度、步骤、检查要点），确保第二块板的焊接质量与第一块一致。焊接不是"焊上去就行"，而是要有标准作业流程来保证可复现性。
+            </p>
+        </div>
+    </div>
+
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：DFN 封装芯片引脚在底部，难以观察焊接质量</strong>
+            <p>TMI8720PD 为 DFN-10-EP 封装，引脚在芯片底部，焊接时无法直接看到焊锡是否熔化流动。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>采用"先涂锡膏再放芯片"的工艺顺序——在焊盘上薄涂一层焊锡膏后放置芯片，热风吹焊时锡膏熔化会从芯片侧面溢出，通过观察侧面溢锡情况判断焊接质量。
+            <br><strong>教训：</strong>DFN 焊接的关键是锡膏用量控制——太少焊不牢，太多会连焊。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：并联驱动方案无法满足差速需求</strong>
+            <p>两个电机并联到同一块板，转速被强制同步，转向时内外轮无法产生速度差，影响操控性。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>采用双板独立驱动方案，每块板独立控制一个电机。左右轮独立调速，支持差速转向和原地转向。
+            <br><strong>教训：</strong>工程决策不能只考虑成本和简洁性，功能需求和技术可行性才是首要约束。
+        </div>
+    </div>
+
+    <h2>五、当前状态与下一步</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>第一块板焊接</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>SMT手焊+插件焊接完成</td>
+            </tr>
+            <tr>
+                <td><strong>双电机方案确定</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>采用双板独立驱动方案</td>
+            </tr>
+            <tr>
+                <td><strong>第二块板焊接</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>按第一块板工艺完成焊接</td>
+            </tr>
+            <tr>
+                <td><strong>双板上电联调</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>空板检查→12V上电→空载验证→双电机测试</td>
+            </tr>
+            <tr>
+                <td><strong>电控代码修改</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>新增 GPIO27/28 驱动右轮，实现独立调速</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天是焊接日——从热风枪手焊 DFN 到插件元件焊接，最终完成第一块驱动板的焊接；同时确定了双电机驱动方案。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>DFN 手焊是"胆大心细"的活：</strong>第一次用热风枪焊接 DFN 封装芯片，300~350°C 的温度控制、锡膏用量的把握、焊后检查的技巧——每一个细节都直接影响焊接质量。纸上谈兵再多，不如亲手焊一块板子来得实在。</li>
+            <li><strong>并联驱动 vs 双板独立：一个关键的架构决策：</strong>如果选择了并联方案，卡丁车将失去差速转向能力，这在后期是无法通过软件弥补的——因为硬件上两个电机已经被强制同步。好在方案讨论中及时发现了这个根本性问题。</li>
+            <li><strong>电解电容的方向是红线：</strong>接反会爆裂，这不是可以"试一试"的问题。焊接前的极性确认和焊后的目视检查，是保护板子和自身安全的底线操作。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            总而言之，今天完成了第一块板的焊接和双电机方案决策——板子从"空板"变成了"半成品"，离"能转起来"又近了一步。
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月19日 · PCB焊接完成与双电机驱动方案确定 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
