@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月20日 全车串联调试与电阻发错应急方案实习日志</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+        h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 6px; }
+        h2 {
+            font-size: 1.35rem; font-weight: 600; color: #0f172a;
+            border-left: 5px solid #3b82f6; padding-left: 14px; margin: 38px 0 16px;
+        }
+        h3 { font-size: 1.08rem; font-weight: 600; color: #1e293b; margin: 22px 0 10px; }
+        h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin: 16px 0 8px; }
+        p, li { font-size: 0.97rem; color: #334155; }
+        .header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 14px;
+        }
+        .header .meta { font-size: 0.92rem; color: #64748b; margin-top: 6px; }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block; background: #dbeafe; color: #1d4ed8;
+            font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-top: 6px;
+        }
+        .info-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px 20px;
+            border: 1px solid #e9edf2; margin: 14px 0;
+        }
+        .info-card.success { background: #f0fdf4; border-color: #bbf7d0; }
+        .info-card.error { background: #fef2f2; border-color: #fecaca; }
+        .info-card.warning { background: #fffbeb; border-color: #fde68a; }
+        table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem;
+        }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+        tr:last-child td { border-bottom: none; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        .highlight-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .highlight-box strong { color: #16a34a; }
+        .ethics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px; border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+        .problem-item {
+            display: flex; gap: 14px; margin: 12px 0; padding: 14px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+        .problem-item .icon.red { background: #fee2e2; }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .icon.orange { background: #fed7aa; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;
+            text-align: center; color: #94a3b8; font-size: 0.88rem;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🔌 全车串联调试与电阻发错应急方案实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月20日</span>
+                <span>⏱ 全天</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🛠 全车系统集成调试 · 应急方案</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月20日的工程实践内容——全车串联调试（车架、电驱、电控、电源模块集成与走线布置），发现厂家将R1/R2贴片电阻发错（1000Ω 应为 100Ω），导致U3输出电压异常。采取BTS备用方案临时驱动电机，已补购正确电阻。日志涵盖系统集成、故障排查与应急方案设计。
+    </p>
+
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 全车串联调试</h3>
+    <p>今日进行整车各模块的串联调试：</p>
+    <ul>
+        <li>车架结构拼装完成</li>
+        <li>电驱模块、电控模块、电源模块物理拼接</li>
+        <li>各模块间走线布置（电机线、电源线、信号线）</li>
+    </ul>
+    <p><strong>集成方式：</strong>采用面包板集成各个功能模块，便于调试和快速修改连接。</p>
+
+    <h3>1.2 电驱板状态确认</h3>
+    <div class="info-card success">
+        <p><strong>✅ 已确认正常：</strong></p>
+        <ul>
+            <li>板子本身焊接无误，无短路/虚焊</li>
+            <li>U1（TMI8720PD）、Q1/Q2（AGM210MAP）工作正常</li>
+            <li>U2/U3 端子、U4 排针连接可靠</li>
+            <li>走线布局合理</li>
+        </ul>
+    </div>
+    <div class="info-card error">
+        <p><strong>❌ 问题发现：厂家发货错误</strong></p>
+        <ul>
+            <li>R1/R2 贴片电阻发成 <strong>1000Ω</strong>（应为 <strong>100Ω</strong>）</li>
+            <li><strong>后果：</strong>U3 输出电压降至原来的 1/10（约 1.2V，正常应为 12V × 占空比）</li>
+            <li><strong>原因分析：</strong>1000Ω 限流电阻导致 U1 输入驱动电流不足（仅 3.3mA），Q1/Q2 栅极驱动电压不够，MOS 管半导通</li>
+        </ul>
+    </div>
+
+    <h3>1.3 应急方案</h3>
+    <table>
+        <thead>
+            <tr><th>措施</th><th>方案</th><th>时间</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>短期</strong></td>
+                <td>采用 BTS（电池直接供电）临时驱动电机，通过开关/继电器控制通断，绕过电驱板 PWM 调速</td>
+                <td>立即执行</td>
+            </tr>
+            <tr>
+                <td><strong>中期</strong></td>
+                <td>已购买正确规格电阻（100Ω 1206 贴片），顺丰发货</td>
+                <td>到货后更换</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 故障根因分析</h3>
+    <div class="info-card">
+        <p><strong>限流电阻 R = 100Ω → R = 1000Ω 的影响链：</strong></p>
+        <p style="margin-top: 8px;">
+            电阻增大 10 倍 → U1 输入驱动电流从 33mA 降至 3.3mA → Q1/Q2 栅极充电速度大幅减慢 → 
+            MOS 管无法完全导通（进入线性区/半导通状态）→ U3 输出电压严重不足（12V → 1.2V）。
+        </p>
+        <p style="margin-top: 8px; color: #16a34a; font-weight: 600;">
+            ✅ 更换为 100Ω 后即可恢复正常。
+        </p>
+    </div>
+
+    <h3>2.2 风险评估</h3>
+    <table>
+        <thead>
+            <tr><th>风险</th><th>影响</th><th>缓解措施</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>BTS 无 PWM 调速</td><td>电机只有全速/停止，无法精细控制</td><td>短期可接受，先用开关控制</td></tr>
+            <tr><td>顺丰延迟</td><td>电驱板恢复时间推后</td><td>已选最快物流，备选京东次日达</td></tr>
+            <tr><td>BTS 电流冲击</td><td>直接启动电流大，可能影响电池/电机</td><td>限流电阻或软启动电路临时接入</td></tr>
+        </tbody>
+    </table>
+
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>📋 责任：元件到货必须验货</h4>
+            <p>
+                贴片电阻发错（1000Ω 代替 100Ω）——如果焊接前用万用表量一下阻值，就能在上电前发现问题。焊上去之后再查，增加了热风枪更换的工序和芯片二次受热的风险。"先验后焊"是电子装配的基本原则，今天用 1.2V 的输出电压买了这个教训。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔄 工程韧性：B 方案思维</h4>
+            <p>
+                电阻发错导致电驱板无法正常工作，但整车调试不能因此停滞。BTS 备用方案（电池直驱）虽然失去了 PWM 调速能力，但保证了整车机械结构和走线调试可以继续推进。工程中永远要有"如果 A 方案失败，B 方案是什么"的预判——这不是悲观，这是韧性。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>📐 系统：面包板集成的调试优势</h4>
+            <p>
+                采用面包板集成各功能模块而非直接固定焊接，使得今天发现电阻问题后可以快速切换走线到 BTS 方案，无需拆卸任何焊接点。在调试阶段，"可改"比"固定"更重要——面包板的多花 10 分钟接线，可能在未来省下一小时的拆焊时间。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>⏱ 计划：物流时间纳入项目排期</h4>
+            <p>
+                选择顺丰发货是一个正确的紧急决策——但如果在前一天的 BOM 确认环节就发现电阻型号存疑，本可以在打样阶段就验货确认，完全避免今天的被动局面。供应链管理中的"最后一公里"（到货验收），往往是最容易被忽视却又最关键的一环。
+            </p>
+        </div>
+    </div>
+
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题1：R1/R2 贴片电阻发错（1000Ω 应为 100Ω）</strong>
+            <p>厂家发货错误，导致 U3 输出电压仅 1.2V，MOS 管半导通，电驱板无法正常驱动电机。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon orange">🔄</div>
+        <div class="content">
+            <strong>短期应急：</strong>采用 BTS 备用方案——12V 电池直接给电机供电，通过开关控制通断，绕过电驱板 PWM 调速，保证整车调试不中断。
+            <br><strong>中期解决：</strong>已购买 100Ω 1206 贴片电阻（顺丰发货），到货后热风枪更换 R1/R2，恢复 PWM 调速功能。
+            <br><strong>教训：</strong>元件到货必须验货——贴片电阻焊前用万用表量一下阻值，只需 10 秒。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon red">⚠️</div>
+        <div class="content">
+            <strong>问题2：BTS 方案无 PWM 调速，如何保证调试效果？</strong>
+            <p>电池直驱只有全速/停止，无法验证电驱板的差速转向和速度控制功能。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>BTS 方案仅用于验证整车机械结构和走线布局的正确性。先用开关控制验证电机转向和车架装配是否正常，待 100Ω 电阻到货更换后，再切换回电驱板进行精细的 PWM 调速和差速转向测试。
+            <br><strong>教训：</strong>调试要有优先级——先验证机械和走线，再调试电控性能。
+        </div>
+    </div>
+
+    <h2>五、当前状态与下一步</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>全车串联调试</strong></td>
+                <td>⏳ <span style="color:#f59e0b;">进行中</span></td>
+                <td>车架/电驱/电控/电源已集成，走线布置完成</td>
+            </tr>
+            <tr>
+                <td><strong>BTS 应急方案</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已启用</span></td>
+                <td>电池直驱保证调试不中断</td>
+            </tr>
+            <tr>
+                <td><strong>100Ω 电阻到货</strong></td>
+                <td>⏳ <span style="color:#f59e0b;">等待中</span></td>
+                <td>顺丰运输中，到货后更换 R1/R2</td>
+            </tr>
+            <tr>
+                <td><strong>电驱板 PWM 恢复</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>更换电阻后验证 U3 输出正常</td>
+            </tr>
+            <tr>
+                <td><strong>整车电控联调</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>双板驱动、差速转向、速度控制</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p><strong>📋 经验沉淀：</strong><br>
+        ① 元件到货必须验货——贴片电阻焊前万用表量阻值<br>
+        ② 备用方案思维——核心元件有问题时 B 方案保证项目不卡死<br>
+        ③ 物流时间纳入计划——关键元件补货预留物流时间<br>
+        ④ 面包板集成优势——调试阶段方便快速改线</p>
+    </div>
+
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天是系统集成日——全车串联调试顺利推进，但被一颗发错的电阻卡住了。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>1000Ω vs 100Ω——一个零的代价：</strong>厂家发错电阻，一个简单到不能再简单的错误，导致整块电驱板无法正常工作。这提醒我——不要信任任何未经验证的物料。焊前 10 秒的万用表测量，可以避免后续几小时甚至几天的排查。</li>
+            <li><strong>B 方案不是可有可无的：</strong>如果没有 BTS 备用方案，今天整车调试就会因为一颗电阻完全停滞。备用方案可能"不够好"（没有 PWM 调速），但"能用"远比"完美但卡住"要好。工程韧性不是追求永不失败，而是为失败做好准备。</li>
+            <li><strong>面包板的选择在调试第一天就证明了价值：</strong>从电驱板切换到 BTS 方案只需要重新插几根杜邦线——这就是模块化集成的意义。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            总而言之，今天全车串联调试因电阻发错受阻，但通过 BTS 方案保证了项目推进。等 100Ω 电阻到货后，电驱板就能真正"转起来"了。
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月20日 · 全车串联调试与电阻发错应急方案 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
