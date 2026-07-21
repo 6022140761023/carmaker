@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7月21日 整车调试完成与地面试车成功实习日志</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            padding: 44px 36px;
+        }
+        h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 6px; }
+        h2 {
+            font-size: 1.35rem; font-weight: 600; color: #0f172a;
+            border-left: 5px solid #3b82f6; padding-left: 14px; margin: 38px 0 16px;
+        }
+        h3 { font-size: 1.08rem; font-weight: 600; color: #1e293b; margin: 22px 0 10px; }
+        h4 { font-size: 1rem; font-weight: 600; color: #1e293b; margin: 16px 0 8px; }
+        p, li { font-size: 0.97rem; color: #334155; }
+        .header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 14px;
+        }
+        .header .meta { font-size: 0.92rem; color: #64748b; margin-top: 6px; }
+        .header .meta span { display: inline-block; margin-right: 18px; }
+        .badge {
+            display: inline-block; background: #dbeafe; color: #1d4ed8;
+            font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-top: 6px;
+        }
+        .info-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px 20px;
+            border: 1px solid #e9edf2; margin: 14px 0;
+        }
+        .success-card {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .success-card strong { color: #16a34a; }
+        table {
+            width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem;
+        }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+        tr:last-child td { border-bottom: none; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        .highlight-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 14px; padding: 18px 20px; margin: 14px 0;
+        }
+        .ethics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0;
+        }
+        .ethics-card {
+            background: #f8fafc; border-radius: 14px; padding: 18px; border-top: 4px solid #3b82f6;
+        }
+        .ethics-card:nth-child(1) { border-top-color: #dc2626; }
+        .ethics-card:nth-child(2) { border-top-color: #2563eb; }
+        .ethics-card:nth-child(3) { border-top-color: #16a34a; }
+        .ethics-card:nth-child(4) { border-top-color: #f59e0b; }
+        .ethics-card h4 { font-size: 1.03rem; margin-bottom: 6px; }
+        .ethics-card p { font-size: 0.92rem; }
+        .problem-item {
+            display: flex; gap: 14px; margin: 12px 0; padding: 14px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #e9edf2;
+        }
+        .problem-item .icon {
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+        .problem-item .icon.green { background: #dcfce7; }
+        .problem-item .icon.blue { background: #dbeafe; }
+        .problem-item .content { flex: 1; }
+        .problem-item .content strong { display: block; margin-bottom: 2px; }
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;
+            text-align: center; color: #94a3b8; font-size: 0.88rem;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.45rem; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .problem-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🚗 整车调试完成与地面试车成功实习日志</h1>
+            <div class="meta">
+                <span>📅 2026年7月21日</span>
+                <span>⏱ 全天</span>
+                <span>📍 西南交通大学 · 峨眉校区</span>
+            </div>
+            <span class="badge">🏁 整车集成调试与试车 · 试车成功</span>
+        </div>
+    </div>
+
+    <div class="success-card">
+        <p><strong>🎉 里程碑：整车地面试车成功！</strong> 整车成功运行，电机驱动正常，转向机构响应良好，车架结构稳定。</p>
+    </div>
+
+    <p style="margin-bottom: 20px; font-size: 0.95rem; color: #475569;">
+        本日志记录了7月21日的工程实践内容——电机接线改进（重新焊接、插簧接线、应力消除处理）、布局调整（按钮位置、BTS安装位置），最终完成地面试车并取得成功。日志涵盖机械可靠性优化与整车集成验证。
+    </p>
+
+    <h2>一、今日工作内容</h2>
+
+    <h3>1.1 电机接线改进</h3>
+    <p><strong>重新焊接：</strong></p>
+    <ul>
+        <li>对电机线进行重新焊接，确保焊点牢固可靠</li>
+        <li>使用<strong>插簧接线</strong>替代直接焊接端子，提高接插便利性和接触可靠性</li>
+    </ul>
+    <p><strong>应力消除处理：</strong></p>
+    <ul>
+        <li><strong>反拉接口处铜线</strong>：焊接后不直接走直线，而是将铜线反向折弯后再引出</li>
+        <li><strong>减小直线长度</strong>：缩短接口到固定点的直线段，降低机械应力</li>
+        <li>目的：防止行驶振动导致焊点/接口脱落，提高整车可靠性</li>
+    </ul>
+
+    <h3>1.2 布局调整</h3>
+    <ul>
+        <li><strong>按钮位置变更</strong>：根据实际驾驶操作习惯重新调整控制按钮安装位置，确保坐姿方便触达</li>
+        <li><strong>BTS位置调整</strong>：优化BTS模块在车架上的安装位置，理顺走线，减少线缆交叉和冗余长度</li>
+    </ul>
+
+    <h3>1.3 地面试车</h3>
+    <ul>
+        <li><strong>整车成功运行</strong>，完成地面试车</li>
+        <li>电机驱动正常，转向机构响应良好</li>
+        <li>车架结构稳定，各连接件无松动</li>
+    </ul>
+    <div class="info-card">
+        <p><strong>当前状态：</strong>电驱板因R1/R2电阻发错（1000Ω），仍使用BTS方案驱动。正确电阻（100Ω）顺丰发货中，到货后更换恢复PWM调速。双轮驱动方案已确认。</p>
+    </div>
+
+    <h2>二、关键技术点</h2>
+
+    <h3>2.1 应力消除工艺</h3>
+    <table>
+        <thead>
+            <tr><th>方法</th><th>操作</th><th>作用</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>反拉折弯</strong></td><td>焊接后将铜线反向折弯再引出</td><td>振动时应力分散在折弯处，不集中于焊点</td></tr>
+            <tr><td><strong>缩短直线段</strong></td><td>减小接口到固定点的直线距离</td><td>减少振动摆幅，降低焊点疲劳</td></tr>
+            <tr><td><strong>插簧接线</strong></td><td>用插簧替代直接焊接端子</td><td>便于维护更换，接触更可靠</td></tr>
+        </tbody>
+    </table>
+
+    <h2>三、工程伦理与设计反思</h2>
+
+    <div class="ethics-grid">
+        <div class="ethics-card">
+            <h4>🔧 可靠：机械应力是接线的隐形杀手</h4>
+            <p>
+                行驶振动环境下，直线引出的导线最容易从焊点脱落——这不是理论推测，而是工程中反复验证的事实。反拉折弯、缩短直线段，这些看似"多余"的步骤，恰恰是提高整车可靠性的关键。好的工程师不仅要让电路"能工作"，更要让它在振动、温变、冲击下"持续工作"。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>👤 以人为本：按钮位置要实际操作验证</h4>
+            <p>
+                按钮装在"看起来合理"的位置和"坐着够得着"的位置可能完全不同。今天根据实际坐姿调整按钮位置，正体现了设计思维中"以人为本"的核心原则——不是设计者觉得方便，而是使用者觉得方便。一个简单的调整，直接提升了驾驶体验。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🛡 安全：试车前的可靠性验证</h4>
+            <p>
+                地面试车不是"通电能跑就行"——电机线重新焊接、应力消除处理、布局调整、走线理顺，每一步都是对行驶安全的保障。试车成功不是运气，而是这些细节工作的必然结果。在车辆行驶这样的安全关键场景中，每一根线的可靠性都关乎驾驶者的安全。
+            </p>
+        </div>
+        <div class="ethics-card">
+            <h4>🔄 韧性：BTS方案的再次验证</h4>
+            <p>
+                BTS备用方案从昨天的"临时应急"变成了今天试车成功的"关键功臣"。虽然它没有PWM调速，但它在电驱板无法工作的情况下让整车成功跑了起来。这再次证明：在工程中，一个"能用"的B方案远比一个"在路上的完美方案"更有价值。
+            </p>
+        </div>
+    </div>
+
+    <h2>四、遇到的问题与解决方案</h2>
+
+    <div class="problem-item">
+        <div class="icon blue">🔧</div>
+        <div class="content">
+            <strong>改进1：电机线焊点在振动环境下可靠性不足</strong>
+            <p>直接焊接端子的方式在行驶振动中可能导致焊点脱落，且维护不便。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>采用插簧接线替代直接焊接，提高接插便利性和接触可靠性。同时进行应力消除处理——反拉折弯铜线、缩短直线段长度，防止振动导致焊点脱落。
+            <br><strong>教训：</strong>机械应力是接线的隐形杀手，反拉折弯是有效的应力消除手段。
+        </div>
+    </div>
+
+    <div class="problem-item">
+        <div class="icon blue">🔧</div>
+        <div class="content">
+            <strong>改进2：按钮位置不符合实际操作习惯</strong>
+            <p>初始安装的按钮位置在坐姿状态下操作不便，影响驾驶体验。</p>
+        </div>
+    </div>
+    <div class="problem-item">
+        <div class="icon green">✅</div>
+        <div class="content">
+            <strong>解决方案：</strong>根据实际坐姿重新调整按钮位置，确保坐着能方便触达。同时优化BTS模块位置和走线布局，减少线缆交叉和冗余。
+            <br><strong>教训：</strong>按钮位置要实际操作验证——坐着够得着才算合格。
+        </div>
+    </div>
+
+    <h2>五、当前状态与下一步</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>状态</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>整车机械集成</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>车架/电驱/电控/电源集成完成</td>
+            </tr>
+            <tr>
+                <td><strong>地面试车</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">成功</span></td>
+                <td>整车成功运行，转向正常，车架稳定</td>
+            </tr>
+            <tr>
+                <td><strong>接线改进</strong></td>
+                <td>✅ <span style="color:#16a34a;font-weight:600;">已完成</span></td>
+                <td>插簧接线+应力消除处理</td>
+            </tr>
+            <tr>
+                <td><strong>更换R1/R2电阻</strong></td>
+                <td>⏳ <span style="color:#f59e0b;">等待到货</span></td>
+                <td>100Ω电阻顺丰运输中</td>
+            </tr>
+            <tr>
+                <td><strong>PWM调速恢复</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>更换电阻后切换回电驱板</td>
+            </tr>
+            <tr>
+                <td><strong>精细参数标定</strong></td>
+                <td>⬜ <span style="color:#64748b;">待进行</span></td>
+                <td>加速曲线、转向差速标定</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+        <p><strong>📋 经验沉淀：</strong><br>
+        ① 机械应力是接线的隐形杀手——反拉折弯是有效的应力消除手段<br>
+        ② 插簧接线比焊接端子更可靠——便于后期维护和快速更换<br>
+        ③ 按钮位置要实际操作验证——坐着够得着才算合格<br>
+        ④ BTS是可靠的保底方案——简单直接的备用方案保证项目不卡死</p>
+    </div>
+
+    <h2>六、实习总结与体会</h2>
+    <div class="info-card">
+        <p>
+            今天是一个值得标记的日子——卡丁车成功完成了地面试车！从设计到实物，从零件到整车，10天的努力终于看到它真正跑起来了。收获如下：
+        </p>
+        <ul style="margin-top: 10px;">
+            <li><strong>车跑起来的那一刻，之前的每一次踩坑都值了：</strong>从电阻发错到BTS应急、从线缆选型到应力消除——今天试车的成功不是运气，而是之前每一次"发现问题-解决问题"的累积结果。工程没有捷径，但每一步都算数。</li>
+            <li><strong>可靠性不是焊上去的，是设计出来的：</strong>反拉折弯、插簧接线、缩短直线段——这些应力消除措施让电机线在振动环境中能长期可靠工作。好的工程师在设计阶段就要考虑"振动之后会怎样"。</li>
+            <li><strong>以人为本不是口号：</strong>按钮位置变更这件小事让我意识到——真正的用户需求不是在办公室里想出来的，而是坐到车上感受出来的。从设计思维工作坊学到的方法，在最后一公里的调试中得到了验证。</li>
+        </ul>
+        <p style="margin-top: 10px;">
+            总而言之，今天整车机械集成与基础电控调试基本完成，地面试车成功。剩下的就是等电阻到货恢复PWM调速，然后进行精细标定。从7月10日到7月21日，从零开始到整车试车成功——这大概就是工程实践的意义。
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>集成电路科学与工程学院 · 工程创新实践项目 · 硬件设计实习日志</p>
+        <p style="margin-top: 4px;">2026年7月21日 · 整车调试完成与地面试车成功 · 记录人：电驱系统负责人</p>
+    </div>
+
+</div>
+</body>
+</html>
