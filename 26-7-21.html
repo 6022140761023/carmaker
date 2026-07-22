@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>科创日志（7月21日）</title>
+<title>科创日志（7月21日）— 芯航第二小组</title>
 <style>
 body{font-family:"Microsoft YaHei",sans-serif;max-width:900px;margin:40px auto;padding:20px;line-height:1.8;color:#333;}
 h1{font-size:22px;border-bottom:2px solid #333;padding-bottom:8px;}
@@ -15,60 +15,67 @@ li{margin:4px 0;}
 strong{color:#000;}
 hr{border:none;border-top:1px solid #ddd;margin:20px 0;}
 .meta{color:#555;margin:4px 0;}
+.tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:12px;font-size:13px;margin:2px;}
 </style>
 </head>
 <body>
 
-<h1>科创日志（7月21日）</h1>
+<h1>🏁 科创日志（7月21日）— 芯航第二小组</h1>
 <p class="meta"><strong>日期</strong>：2026-07-21</p>
 <p class="meta"><strong>小组</strong>：芯航第二小组</p>
-<p class="meta"><strong>姓名</strong>：王奕霖</p>
-<p class="meta"><strong>岗位</strong>：硬件负责人（电驱系统）</p>
+<p class="meta"><strong>岗位分工</strong>：硬件负责人（王奕霖）、电控、车架、3D打印</p>
+<p class="meta">
+  <span class="tag">🔌 整车布线</span>
+  <span class="tag">🖨️ 3D打印封装</span>
+  <span class="tag">⚙️ 电机校准</span>
+  <span class="tag">🛡 绝缘防护</span>
+  <span class="tag">🏎️ 实地上路</span>
+  <span class="tag">🚀 载人行驶成功</span>
+</p>
 
-<h2>一、工作内容</h2>
-
-<p>今日主要完成<strong>整车布线优化、电机校准、绝缘处理</strong>与<strong>整车实测</strong>工作。</p>
+<h2>一、今日工作内容</h2>
 
 <h3>上午：整车布线</h3>
 <ul>
-<li>完成全车线路整体布线，连通所有控制板与供电电源</li>
-<li>后端走线采用<strong>面包板</strong>进行信号转接与扩展</li>
-<li>元器件及线束固定方式以<strong>胶布缠绕+夹带绑扎</strong>为主（工程简化，便于后期调整）</li>
-<li>利用3D打印设备完成<strong>整车外壳封装件</strong>及<strong>外观装饰件</strong>的打印与装配</li>
+  <li>小组全体成员分工协作，共同完成卡丁车整车线路的规整与布线工作</li>
+  <li>按照整车电路逻辑梳理线路走向，合理排布电源线与信号线</li>
+  <li>完成全车线路整体布线，连通所有控制板与供电电源</li>
+  <li>后端走线采用<strong>面包板</strong>进行信号转接与扩展</li>
+  <li>元器件及线束固定方式以<strong>胶布缠绕+夹带绑扎</strong>为主（工程简化，便于后期调整）</li>
+  <li>利用3D打印设备完成<strong>整车外壳封装件</strong>及<strong>外观装饰件</strong>的打印与装配</li>
 </ul>
-
-<img src="20260721_3dprint.jpg" alt="3D打印切片——外壳封装件">
 
 <h3>上午至下午：电机校准与绝缘处理</h3>
 <ul>
-<li>针对通电后<strong>左右车轮转速不一致</strong>的问题，不断调整电机延时参数</li>
-<li>通过校准使两轮转速基本保持同步</li>
-<li>优化电池接线座走线</li>
-<li>对电机进行全面<strong>绝缘防护</strong>，保证系统稳定输出12V电压</li>
-<li>车辆空载运行正常</li>
+  <li>针对通电后<strong>左右车轮转速不一致</strong>的问题，不断调整电机延时参数</li>
+  <li>通过校准使两轮转速基本保持同步</li>
+  <li>优化电池接线座走线</li>
+  <li>对电机进行全面<strong>绝缘防护</strong>，保证系统稳定输出12V电压</li>
+  <li>车辆空载运行正常</li>
 </ul>
 
 <h3>下午：实地上路测试</h3>
 <ul>
-<li>对整车进行<strong>实地上路试验</strong>，检验行驶稳定性、动力输出响应、电控系统可靠性</li>
-<li>路试过程中，<strong>电机启停产生的瞬时电压浪涌导致INA219采样芯片烧毁</strong>，电量监测模块失效</li>
-<li>受工期与物料条件限制，小组决定<strong>暂时取消电量监测功能</strong></li>
-<li>复测整车行驶状态正常，最终<strong>实现安全载人行驶</strong></li>
+  <li>对整车进行<strong>实地上路试验</strong>，全面检验车辆行驶稳定性、动力输出响应、电控系统可靠性</li>
+  <li>路试过程中，<strong>电机启停产生的瞬时电压浪涌导致INA219采样芯片烧毁</strong>，电量监测模块失效</li>
+  <li>经小组集体讨论判断：当前整车工作环境的电磁干扰较大，INA219模块量程及抗干扰能力无法适配大功率动力系统</li>
+  <li>受工期与物料条件限制，小组决定<strong>暂时取消电量监测功能</strong>，移除该检测模块，简化电路结构</li>
+  <li>复测整车行驶状态正常，最终<strong>实现安全载人行驶</strong></li>
 </ul>
-
-<img src="20260721_roadtest.jpg" alt="走廊实地测试">
 
 <hr>
 
 <h2>二、心得体会</h2>
 
-<p>今天的整车集成工作让我收获很大。<strong>规整布线、绝缘防护</strong>让我意识到车载设备更注重<strong>稳定性与安全性</strong>，细节处理直接影响整车可靠性。</p>
+<p><strong>整车集成工作让我们收获很大。</strong>规整布线、绝缘防护让我们意识到车载设备更注重稳定性与安全性，细节处理直接影响整车可靠性。整洁合理的线路布局是设备稳定运行的基础。</p>
 
-<p>通过校准电机转速，我发现<strong>即使相同型号器件也存在个体差异</strong>，需要通过调试适配达到最佳效果。左右轮转速不一致的问题，最终是通过调整延时参数解决的。</p>
+<p>通过校准电机转速，我们发现<strong>即使相同型号器件也存在个体差异</strong>，需要通过调试适配达到最佳效果。左右轮转速不一致的问题，最终是通过调整延时参数解决的。</p>
 
-<p>最深刻的体会是<strong>大功率工况对弱电芯片的影响极大</strong>。电机启停产生的瞬时电压浪涌会直接烧毁精密采样芯片，让我明白电路设计必须提前做好防护。</p>
+<p><strong>最深刻的体会是大功率工况对弱电芯片的影响极大。</strong>电机启停产生的瞬时电压浪涌会直接烧毁精密采样芯片——INA219模块的故障让我们认识到：并非所有传感器模块都适用于大功率、高干扰的车辆环境，电路设计必须提前做好防护。</p>
 
-<p>在项目收尾阶段，我也学会了<strong>合理取舍功能</strong>，优先保证整车核心行驶功能。电量监测虽然好用，但工期和物料都不允许重做，果断取消是最务实的选择——<strong>工程实践以稳定落地为第一原则</strong>。</p>
+<p>在项目收尾阶段，我们也学会了<strong>合理取舍功能</strong>，优先保证整车核心行驶功能。通过小组集体排查、讨论并最终果断删减冗余故障模块，学会了根据实际测试效果灵活优化电路方案，不再机械堆砌器件。<strong>敢于剔除不稳定结构、简化系统，反而能大幅提升整车可靠性。</strong></p>
+
+<p>今日从整车布线、外观封装到实地跑车测试，完整参与了车辆收尾装配与整车实测流程。本次实践有效提升了实车测试能力、故障判断能力与团队问题研讨能力。</p>
 
 </body>
 </html>

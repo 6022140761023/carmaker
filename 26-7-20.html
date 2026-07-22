@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>科创日志（7月20日）</title>
+<title>科创日志（7月20日）— 芯航第二小组</title>
 <style>
 body{font-family:"Microsoft YaHei",sans-serif;max-width:900px;margin:40px auto;padding:20px;line-height:1.8;color:#333;}
 h1{font-size:22px;border-bottom:2px solid #333;padding-bottom:8px;}
@@ -15,49 +15,73 @@ li{margin:4px 0;}
 strong{color:#000;}
 hr{border:none;border-top:1px solid #ddd;margin:20px 0;}
 .meta{color:#555;margin:4px 0;}
+.tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:12px;font-size:13px;margin:2px;}
 </style>
 </head>
 <body>
 
-<h1>科创日志（7月20日）</h1>
+<h1>🚗 科创日志（7月20日）— 芯航第二小组</h1>
 <p class="meta"><strong>日期</strong>：2026-07-20</p>
 <p class="meta"><strong>小组</strong>：芯航第二小组</p>
-<p class="meta"><strong>姓名</strong>：王奕霖</p>
-<p class="meta"><strong>岗位</strong>：硬件负责人（电驱系统）</p>
+<p class="meta"><strong>岗位分工</strong>：硬件负责人（王奕霖）、电控、车架、3D打印</p>
+<p class="meta">
+  <span class="tag">🔧 车架打磨</span>
+  <span class="tag">⚡ 三电联调</span>
+  <span class="tag">📟 INA219调试</span>
+  <span class="tag">🔌 差速转向成功</span>
+  <span class="tag">⚙️ 三档驱动</span>
+  <span class="tag">🧩 面包板布线</span>
+</p>
 
-<img src="20260720_workbench.jpg" alt="实训工位">
+<h2>一、今日工作内容</h2>
 
-<h2>一、工作内容</h2>
-
-<p>今日主要进行<strong>INA219信号采集调试</strong>与<strong>整车联调准备工作</strong>。</p>
-
-<h3>上午至中午：INA219信号链路调试</h3>
+<h3>上午：车架外观完善</h3>
 <ul>
-<li>排查INA219无信号输出问题，经过多次复测确认是PCB板载芯片损坏</li>
-<li>先后测试<strong>七块样板</strong>，逐一筛选，最终找出完好的INA219芯片</li>
-<li>对照原理图反复分析电路逻辑，调整接线方式</li>
-<li>成功搭建"INA219 → I2C总线 → ESP32 → OLED"信号链路</li>
-<li>OLED屏幕正常显示<strong>母线电压、电流、功率及剩余电量</strong>参数</li>
-<li>掌握该型号OLED<strong>无法显示中文和特殊符号</strong>的硬件限制，界面改用英文+数字</li>
+  <li>对车架表面进行打磨处理，去除切割毛刺和焊接残渣</li>
+  <li>检查各连接处的稳固性，对松动部位进行加固</li>
 </ul>
 
-<h3>下午：三电联调与硬件布局规划</h3>
+<h3>上午至下午：电路系统联调与INA219信号采集调试</h3>
 <ul>
-<li>参与<strong>电池、电控、电驱三模块联调</strong>，排查出电驱板存在故障</li>
-<li>重新规划整车硬件布局，预留主控板、电池盒安装位置</li>
-<li>启动整车排线工作</li>
-<li>根据小车<strong>前轮刚性共轴结构</strong>，论证得出<strong>差速转弯功能无法实现</strong>，小组最终取消该开发方案</li>
+  <li><strong>INA219 信号链路调试</strong>：排查 INA219 无信号输出问题，经过多次复测确认是 PCB 板载芯片损坏</li>
+  <li>先后测试 <strong>七块样板</strong>，逐一筛选，最终找出完好的 INA219 芯片</li>
+  <li>对照原理图反复分析电路逻辑，调整接线方式</li>
+  <li>成功搭建 <strong>"INA219 → I2C总线 → ESP32 → OLED"</strong> 信号链路</li>
+  <li>OLED 屏幕正常显示 <strong>母线电压、电流、功率及剩余电量</strong> 参数</li>
+  <li>掌握该型号 OLED <strong>无法显示中文和特殊符号</strong> 的硬件限制，界面改用英文+数字</li>
+  <li><strong>电机可在三个档位下进行驱动</strong>，验证了电机驱动系统的多级调速能力</li>
+  <li><strong>差速转向功能成功实现</strong>，左右轮独立调速满足转弯需求</li>
+</ul>
+
+<h3>下午：三电联调与驱动板故障排查</h3>
+<ul>
+  <li>与队友协同启动 <strong>电池、电控、电驱三模块联调</strong>，按计划验证协同工作</li>
+  <li>测试过程中发现电驱板存在短路故障，直接导致系统无法正常上电</li>
+  <li>小组分步排查，采取多种方案应对</li>
+</ul>
+
+<h3>故障排查过程</h3>
+<ul>
+  <li><strong>方案一：</strong>对旧板子进行检测和维修，尝试修复短路点——未成功</li>
+  <li><strong>方案二：</strong>重新焊接一块新板子，但问题依旧存在</li>
+  <li><strong>方案三：</strong>向老师求助，采用备用方案进行替换——调试成功</li>
+  <li>经过多次尝试后，电路系统恢复正常工作</li>
+  <li>重新规划整车硬件布局，预留主控板、电池盒安装位置</li>
+  <li>启动整车排线工作，后端走线采用<strong>面包板</strong>进行信号转接与扩展</li>
+  <li>元器件及线束固定方式以<strong>胶布缠绕+夹带绑扎</strong>为主</li>
 </ul>
 
 <hr>
 
 <h2>二、心得体会</h2>
 
-<p>今天让我深刻体会到<strong>硬件调试需要极大的耐心和严谨的排查思路</strong>。故障不会直观显现，需要通过分段测试、逐步排除才能定位真正问题，不能凭感觉判断。</p>
+<p><strong>硬件调试需要极大的耐心和严谨的排查思路。</strong>故障不会直观显现，需要通过分段测试、逐步排除才能定位真正问题，不能凭感觉判断。今天接连遭遇短路、断路等严重问题，试了维修、试了重焊、试了各种排查手段——当一次次尝试都没有起色的时候，真的开始怀疑自己。</p>
 
-<p>同时我认识到，<strong>工程开发不能只追求功能实现，更要结合机械结构判断可行性</strong>。前轮刚性共轴意味着左右轮转速始终相同，差速转弯在物理上无法实现——及时舍弃这个方案节省了大量时间。</p>
+<p>但好在全组没有放弃，大家在一起想办法，最后向老师请教后拿了备用方案才终于把系统调通。那一刻悬着的心才算真正落地。</p>
 
-<p>从单一电路调试进入多模块联调，让我逐渐建立<strong>整车系统思维</strong>，明白了各个模块之间相互适配、兼容的重要性。</p>
+<p><strong>差速转向功能的成功验证</strong>是今天的一个重要里程碑。虽然前轮采用刚性共轴结构，但通过双电机独立调速的方案，成功实现了差速转弯。</p>
+
+<p>从单一电路调试进入多模块联调，让我们逐渐建立<strong>整车系统思维</strong>，明白了各个模块之间相互适配、兼容的重要性。同时也认识到——项目里遇到瓶颈太正常了，关键不是不犯错，而是犯错了还能咬牙撑住，试到最后一刻。</p>
 
 </body>
 </html>
