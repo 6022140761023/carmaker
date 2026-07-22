@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>科创日志（7月20日）</title>
+<style>
+body{font-family:"Microsoft YaHei",sans-serif;max-width:900px;margin:40px auto;padding:20px;line-height:1.8;color:#333;}
+h1{font-size:22px;border-bottom:2px solid #333;padding-bottom:8px;}
+h2{font-size:18px;margin-top:25px;border-left:4px solid #333;padding-left:10px;}
+h3{font-size:15px;color:#555;margin-top:15px;}
+img{max-width:100%;margin:10px 0;border:1px solid #ccc;}
+p{margin:8px 0;}
+ul{margin:8px 0;padding-left:25px;}
+li{margin:4px 0;}
+strong{color:#000;}
+hr{border:none;border-top:1px solid #ddd;margin:20px 0;}
+.meta{color:#555;margin:4px 0;}
+</style>
+</head>
+<body>
+
+<h1>科创日志（7月20日）</h1>
+<p class="meta"><strong>日期</strong>：2026-07-20</p>
+<p class="meta"><strong>小组</strong>：芯航第二小组</p>
+<p class="meta"><strong>姓名</strong>：王奕霖</p>
+<p class="meta"><strong>岗位</strong>：硬件负责人（电驱系统）</p>
+
+<img src="20260720_workbench.jpg" alt="实训工位">
+
+<h2>一、工作内容</h2>
+
+<p>今日主要进行<strong>INA219信号采集调试</strong>与<strong>整车联调准备工作</strong>。</p>
+
+<h3>上午至中午：INA219信号链路调试</h3>
+<ul>
+<li>排查INA219无信号输出问题，经过多次复测确认是PCB板载芯片损坏</li>
+<li>先后测试<strong>七块样板</strong>，逐一筛选，最终找出完好的INA219芯片</li>
+<li>对照原理图反复分析电路逻辑，调整接线方式</li>
+<li>成功搭建"INA219 → I2C总线 → ESP32 → OLED"信号链路</li>
+<li>OLED屏幕正常显示<strong>母线电压、电流、功率及剩余电量</strong>参数</li>
+<li>掌握该型号OLED<strong>无法显示中文和特殊符号</strong>的硬件限制，界面改用英文+数字</li>
+</ul>
+
+<h3>下午：三电联调与硬件布局规划</h3>
+<ul>
+<li>参与<strong>电池、电控、电驱三模块联调</strong>，排查出电驱板存在故障</li>
+<li>重新规划整车硬件布局，预留主控板、电池盒安装位置</li>
+<li>启动整车排线工作</li>
+<li>根据小车<strong>前轮刚性共轴结构</strong>，论证得出<strong>差速转弯功能无法实现</strong>，小组最终取消该开发方案</li>
+</ul>
+
+<hr>
+
+<h2>二、心得体会</h2>
+
+<p>今天让我深刻体会到<strong>硬件调试需要极大的耐心和严谨的排查思路</strong>。故障不会直观显现，需要通过分段测试、逐步排除才能定位真正问题，不能凭感觉判断。</p>
+
+<p>同时我认识到，<strong>工程开发不能只追求功能实现，更要结合机械结构判断可行性</strong>。前轮刚性共轴意味着左右轮转速始终相同，差速转弯在物理上无法实现——及时舍弃这个方案节省了大量时间。</p>
+
+<p>从单一电路调试进入多模块联调，让我逐渐建立<strong>整车系统思维</strong>，明白了各个模块之间相互适配、兼容的重要性。</p>
+
+</body>
+</html>
